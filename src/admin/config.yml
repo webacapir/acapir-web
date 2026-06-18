@@ -19,8 +19,12 @@ collections:
       - { label: "Títol (català)", name: "title_ca", widget: "string" }
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Resum (català)", name: "resum_ca", widget: "text", required: false }
+      - { label: "Resumen (castellano)", name: "resum_es", widget: "text", required: false }
       - { label: "Imatge", name: "image", widget: "image", required: false }
-      - { label: "Enllaç extern", name: "link", widget: "string", required: false, hint: "URL de la notícia o document extern" }
+      - { label: "Enllaç extern", name: "link", widget: "string", required: false }
+      - { label: "Text del botó (català)", name: "link_text_ca", widget: "string", required: false, default: "Llegir més" }
+      - { label: "Texto del botón (castellano)", name: "link_text_es", widget: "string", required: false, default: "Leer más" }
       - { label: "Notícia destacada", name: "destacada", widget: "boolean", default: false }
 
   - name: "recursos"
@@ -33,12 +37,28 @@ collections:
       - { label: "Títol (català)", name: "title_ca", widget: "string" }
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Tipus (PDF, Vídeo...)", name: "tipus", widget: "string", required: false }
+      - { label: "Resum (català)", name: "resum_ca", widget: "text", required: false }
+      - { label: "Resumen (castellano)", name: "resum_es", widget: "text", required: false }
       - { label: "Autors", name: "autors", widget: "string", required: false }
       - { label: "ISBN", name: "isbn", widget: "string", required: false }
       - { label: "Llicència", name: "llicencia", widget: "string", required: false }
       - { label: "Imatge portada", name: "image", widget: "image", required: false }
       - { label: "Enllaç", name: "link", widget: "string" }
       - { label: "Recurs destacat", name: "destacat", widget: "boolean", default: false }
+
+  - name: "formacio"
+    label: "Arxiu de Formació"
+    label_singular: "Material"
+    folder: "src/formacio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Títol (català)", name: "title_ca", widget: "string" }
+      - { label: "Título (castellano)", name: "title_es", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Tipus (PDF, Vídeo...)", name: "tipus", widget: "string", default: "PDF" }
+      - { label: "Enllaç", name: "link", widget: "string" }
 
   - name: "junta"
     label: "Junta Directiva"
@@ -59,7 +79,7 @@ collections:
   - name: "linies"
     label: "Línies de treball"
     files:
-      - label: "Les 5 línies"
+      - label: "Les línies"
         name: "items"
         file: "src/_data/linies.json"
         fields:
@@ -73,14 +93,59 @@ collections:
   - name: "config"
     label: "Configuració general"
     files:
-      - label: "Configuració"
+      - label: "Textos i configuració"
         name: "config"
         file: "src/_data/config.json"
         fields:
-          - { label: "Email de contacte", name: "email", widget: "string" }
-          - { label: "Twitter / X", name: "twitter", widget: "string" }
-          - { label: "Instagram", name: "instagram", widget: "string" }
-          - { label: "Text destacat NOU (català)", name: "nou_destacat_ca", widget: "string" }
-          - { label: "Texto destacado NUEVO (castellano)", name: "nou_destacat_es", widget: "string" }
-          - { label: "Data del destacat (ex: Juny 2026)", name: "nou_destacat_data", widget: "string" }
-          - { label: "Enllaç del destacat", name: "nou_destacat_link", widget: "string" }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Títol de la pàgina", name: "seo_titol", widget: "string" }
+              - { label: "Descripció (Google)", name: "seo_descripcio", widget: "text" }
+          - label: "Qui som — Presentació"
+            name: "presentacio"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Text (català)", name: "presentacio_ca", widget: "text" }
+              - { label: "Texto (castellano)", name: "presentacio_es", widget: "text" }
+          - label: "Qui som — Associa't"
+            name: "associa"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Títol (català)", name: "associa_titol_ca", widget: "string" }
+              - { label: "Título (castellano)", name: "associa_titol_es", widget: "string" }
+              - { label: "Text (català)", name: "associa_text_ca", widget: "text" }
+              - { label: "Texto (castellano)", name: "associa_text_es", widget: "text" }
+              - { label: "Enllaç", name: "associa_link", widget: "string" }
+              - { label: "Botó (català)", name: "associa_btn_ca", widget: "string" }
+              - { label: "Botón (castellano)", name: "associa_btn_es", widget: "string" }
+          - label: "Destacat NOU"
+            name: "nou"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Text (català)", name: "nou_destacat_ca", widget: "string" }
+              - { label: "Texto (castellano)", name: "nou_destacat_es", widget: "string" }
+              - { label: "Data (ex: Juny 2026)", name: "nou_destacat_data", widget: "string" }
+              - { label: "Enllaç (ex: #actualitat)", name: "nou_destacat_link", widget: "string" }
+          - label: "Contacte"
+            name: "contacte"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Títol contacte (català)", name: "contacte_titol_ca", widget: "string" }
+              - { label: "Título contacto (castellano)", name: "contacte_titol_es", widget: "string" }
+              - { label: "Subtítol (català)", name: "contacte_subtitol_ca", widget: "string" }
+              - { label: "Subtítulo (castellano)", name: "contacte_subtitol_es", widget: "string" }
+          - label: "Xarxes socials"
+            name: "xarxes"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Twitter / X", name: "twitter", widget: "string" }
+              - { label: "Instagram", name: "instagram", widget: "string" }
