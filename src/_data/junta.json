@@ -1,0 +1,17 @@
+{
+  "membres": [
+    {"rol_ca": "Presidència", "rol_es": "Presidencia", "nom": "María José Miñano Valero", "vocal": false},
+    {"rol_ca": "Vicepresidència", "rol_es": "Vicepresidencia", "nom": "Jesús López Gómez", "vocal": false},
+    {"rol_ca": "Tresoreria", "rol_es": "Tesorería", "nom": "Sara Gámez Poyatos", "vocal": false},
+    {"rol_ca": "Vicetresoreria", "rol_es": "Vicetesorería", "nom": "Cristina Tablero Nadal", "vocal": false},
+    {"rol_ca": "Secretaria", "rol_es": "Secretaría", "nom": "Jordi Mestres Carbonell", "vocal": false},
+    {"rol_ca": "Vicesecretaria", "rol_es": "Vicesecretaría", "nom": "Mariona Aparicio Muñoz", "vocal": false},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "Berta Vilaseca Garcia", "vocal": true},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "Lorena Carrascal Granados", "vocal": true},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "Emma Bonamaisó Nogué", "vocal": true},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "María Rosa Mansilla", "vocal": true},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "Nuria Batlle i Nicolau", "vocal": true},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "Noelia Domínguez", "vocal": true},
+    {"rol_ca": "Vocal", "rol_es": "Vocal", "nom": "Carla Mariscal Plaza", "vocal": true}
+  ]
+}

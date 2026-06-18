@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/img"
+public_folder: "/assets/img"
+
+locale: ca
+
+collections:
+
+  - name: "noticias"
+    label: "Notícies"
+    label_singular: "Notícia"
+    folder: "src/noticias"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Títol (català)", name: "title_ca", widget: "string" }
+      - { label: "Título (castellano)", name: "title_es", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Imatge", name: "image", widget: "image", required: false }
+      - { label: "Enllaç extern", name: "link", widget: "string", required: false, hint: "URL de la notícia o document extern" }
+      - { label: "Notícia destacada", name: "destacada", widget: "boolean", default: false }
+
+  - name: "recursos"
+    label: "Documentació i Recursos"
+    label_singular: "Recurs"
+    folder: "src/recursos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Títol (català)", name: "title_ca", widget: "string" }
+      - { label: "Título (castellano)", name: "title_es", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Autors", name: "autors", widget: "string", required: false }
+      - { label: "ISBN", name: "isbn", widget: "string", required: false }
+      - { label: "Llicència", name: "llicencia", widget: "string", required: false }
+      - { label: "Imatge portada", name: "image", widget: "image", required: false }
+      - { label: "Enllaç", name: "link", widget: "string" }
+      - { label: "Recurs destacat", name: "destacat", widget: "boolean", default: false }
+
+  - name: "junta"
+    label: "Junta Directiva"
+    files:
+      - label: "Membres de la junta"
+        name: "membres"
+        file: "src/_data/junta.json"
+        fields:
+          - label: "Membres"
+            name: "membres"
+            widget: "list"
+            fields:
+              - { label: "Càrrec (català)", name: "rol_ca", widget: "string" }
+              - { label: "Cargo (castellano)", name: "rol_es", widget: "string" }
+              - { label: "Nom complet", name: "nom", widget: "string" }
+              - { label: "És vocal?", name: "vocal", widget: "boolean", default: false }
+
+  - name: "linies"
+    label: "Línies de treball"
+    files:
+      - label: "Les 5 línies"
+        name: "items"
+        file: "src/_data/linies.json"
+        fields:
+          - label: "Línies"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Text (català)", name: "ca", widget: "text" }
+              - { label: "Texto (castellano)", name: "es", widget: "text" }
+
+  - name: "config"
+    label: "Configuració general"
+    files:
+      - label: "Configuració"
+        name: "config"
+        file: "src/_data/config.json"
+        fields:
+          - { label: "Email de contacte", name: "email", widget: "string" }
+          - { label: "Twitter / X", name: "twitter", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "Text destacat NOU (català)", name: "nou_destacat_ca", widget: "string" }
+          - { label: "Texto destacado NUEVO (castellano)", name: "nou_destacat_es", widget: "string" }
+          - { label: "Data del destacat (ex: Juny 2026)", name: "nou_destacat_data", widget: "string" }
+          - { label: "Enllaç del destacat", name: "nou_destacat_link", widget: "string" }
