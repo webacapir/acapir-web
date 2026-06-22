@@ -165,6 +165,200 @@ layout: layouts/base.njk
         <h2 class="section-title"><span data-lang="ca">Últimes notícies.</span><span data-lang="es">Últimas noticias.</span></h2>
       </div>
     </div>
+    <!-- Paginació JS: max 4 noticias per pàgina (1 destacada + 3 secundàries) -->
+    <div id="news-container">
+      {% for noticia in collections.noticias %}
+      {% set ni = loop.index0 %}
+      {% set page = (ni / 4) | int + 1 %}
+
+      {% if ni % 4 == 0 %}
+      <div class="news-page" data-page="{{ page }}"{% if page > 1 %} style="display:none;"{% endif %}>
+        {% if ni == 0 %}
+        <div class="news-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        {% else %}
+        <div class="news-grid-2 reveal-group" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        {% endif %}
+      {% endif %}
+
+      {% if ni == 0 %}
+        <!-- Notícia destacada -->
+        <div class="news-card news-card-featured" style="display:flex;flex-direction:column;">
+          <div style="height:260px;overflow:hidden;position:relative;">
+            {% if noticia.data.image %}
+            <img src="{{ noticia.data.image }}" alt="{{ noticia.data.title_ca }}" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;" />
+            {% else %}
+            <div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:48px;color:rgba(255,255,255,.1);">✦</span>
+            </div>
+            {% endif %}
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.1),rgba(0,0,0,.45));"></div>
+            <span style="position:absolute;top:16px;left:16px;background:#4ADDD5;color:#000;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;">
+              {{ noticia.date | dataFormat }}
+            </span>
+          </div>
+          <div style="padding:28px 28px 32px;background:#fff;flex:1;">
+            <h3 style="font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.01em;margin-bottom:12px;">
+              <span data-lang="ca">{{ noticia.data.title_ca }}</span>
+              <span data-lang="es">{{ noticia.data.title_es }}</span>
+            </h3>
+            {% if noticia.data.resum_ca %}
+            <div id="resum-featured" style="margin-bottom:16px;">
+              <p class="resum-truncated" style="font-size:14px;font-weight:300;line-height:1.7;color:#555;">
+                <span data-lang="ca">{{ noticia.data.resum_ca | linkify | safe }}</span>
+                <span data-lang="es">{{ noticia.data.resum_es | linkify | safe }}</span>
+              </p>
+            </div>
+            {% endif %}
+            {% if noticia.data.resum_ca or noticia.data.cos_ca %}
+            <button onclick="
+              var scrollY = window.scrollY;
+              var wrap = document.getElementById('resum-featured');
+              var cos = document.getElementById('cos-featured');
+              var p = wrap ? wrap.querySelector('p') : null;
+              var open = this.getAttribute('data-open') === '1';
+              if (!open) {
+                if (p) p.classList.remove('resum-truncated');
+                if (cos) cos.style.display = 'block';
+                this.setAttribute('data-open','1');
+                this.querySelector('.btn-text-ca').textContent = 'Tancar';
+                this.querySelector('.btn-text-es').textContent = 'Cerrar';
+              } else {
+                if (p) p.classList.add('resum-truncated');
+                if (cos) cos.style.display = 'none';
+                this.setAttribute('data-open','0');
+                this.querySelector('.btn-text-ca').textContent = 'Llegir més';
+                this.querySelector('.btn-text-es').textContent = 'Leer más';
+                requestAnimationFrame(function(){ window.scrollTo(0, scrollY); });
+              }
+            " data-open="0" style="display:inline-block;background:none;border:none;padding:0;cursor:pointer;font-size:13px;font-weight:500;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;text-underline-offset:3px;margin-bottom:16px;font-family:inherit;touch-action:manipulation;">
+              <span class="btn-text-ca" data-lang="ca">Llegir més</span>
+              <span class="btn-text-es" data-lang="es">Leer más</span>
+            </button>
+            <div id="cos-featured" style="display:none;padding-top:16px;border-top:1px solid #eee;">
+              {% if noticia.data.cos_ca %}
+              <div style="font-size:14px;font-weight:300;line-height:1.8;color:#444;margin-bottom:16px;">
+                <span data-lang="ca">{{ noticia.data.cos_ca | linkify | safe }}</span>
+                <span data-lang="es">{{ noticia.data.cos_es | linkify | safe }}</span>
+              </div>
+              {% endif %}
+              {% if noticia.data.link %}
+              <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+                style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
+                <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir al document" }}</span>
+                <span data-lang="es">{{ noticia.data.link_text_es or "Acceder al documento" }}</span>
+              </a>
+              {% endif %}
+            </div>
+            {% elif noticia.data.link %}
+            <a href="{{ noticia.data.link }}" target="_blank" rel="noopener" class="btn-outline-black">
+              <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
+              <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="news-secondary-col" style="display:flex;flex-direction:column;gap:20px;">
+      {% else %}
+        <!-- Notícia secundària -->
+        <div class="news-card" style="display:flex;flex-direction:column;">
+          {% if noticia.data.image %}
+          <div class="news-card-img">
+            <img src="{{ noticia.data.image }}" alt="{{ noticia.data.title_ca }}" loading="lazy" />
+          </div>
+          {% endif %}
+          <div style="padding:20px 20px 24px;flex:1;">
+            <p style="font-size:10px;color:#999;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">
+              {{ noticia.date | dataFormat }}
+            </p>
+            <h3 style="font-size:15px;font-weight:700;line-height:1.3;margin-bottom:10px;">
+              <span data-lang="ca">{{ noticia.data.title_ca }}</span>
+              <span data-lang="es">{{ noticia.data.title_es }}</span>
+            </h3>
+            {% if noticia.data.cos_ca or noticia.data.resum_ca %}
+            <button onclick="var c=this.nextElementSibling;var o=c.style.display!=='none';var sy=window.scrollY;c.style.display=o?'none':'block';this.textContent=o?'+ Llegir més':'− Tancar';if(o)requestAnimationFrame(function(){window.scrollTo(0,sy);});"
+              style="font-size:12px;font-weight:500;color:#000;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:#4ADDD5;text-underline-offset:2px;touch-action:manipulation;">+ Llegir més</button>
+            <div style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid #eee;">
+              <p style="font-size:13px;font-weight:300;line-height:1.7;color:#444;margin-bottom:10px;">
+                <span data-lang="ca">{{ (noticia.data.cos_ca or noticia.data.resum_ca) | linkify | safe }}</span>
+                <span data-lang="es">{{ (noticia.data.cos_es or noticia.data.resum_es) | linkify | safe }}</span>
+              </p>
+              {% if noticia.data.link %}
+              <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+                style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
+                <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir" }}</span>
+                <span data-lang="es">{{ noticia.data.link_text_es or "Acceder" }}</span>
+              </a>
+              {% endif %}
+            </div>
+            {% elif noticia.data.link %}
+            <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+              style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
+              <span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if ni % 4 == 3 or loop.last %}
+        {% if ni == 3 or (ni < 3 and loop.last) %}
+        </div><!-- fi secondary-col -->
+        {% endif %}
+        </div><!-- fi news-grid -->
+      </div><!-- fi news-page -->
+      {% endif %}
+      {% endfor %}
+    </div><!-- fi news-container -->
+
+    <!-- Paginació -->
+    {% set totalPages = ((collections.noticias.length - 1) / 4 + 1) | int %}
+    {% if totalPages > 1 %}
+    <div id="news-pagination" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:32px;">
+      {% for p in range(1, totalPages + 1) %}
+      <button onclick="newsGoPage({{ p }})" data-newspage="{{ p }}"
+        style="width:36px;height:36px;border:1px solid {% if p == 1 %}#000{% else %}#ddd{% endif %};background:{% if p == 1 %}#000{% else %}#fff{% endif %};color:{% if p == 1 %}#fff{% else %}#000{% endif %};font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;touch-action:manipulation;">{{ p }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+<div class="section-divider"></div>
+
+<!-- LÍNIES DE TREBALL -->
+<section id="linies" class="section-pad section-dark">
+  <div class="content-width">
+    <div class="section-header reveal">
+      <div class="section-header-text">
+        <div class="accent-line"></div>
+        <p class="section-eyebrow"><span data-lang="ca">02 — Línies de treball</span><span data-lang="es">02 — Líneas de trabajo</span></p>
+        <h2 class="section-title"><span data-lang="ca">Línies de treball.</span><span data-lang="es">Líneas de trabajo.</span></h2>
+      </div>
+    </div>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:20px;" class="reveal-group">
+      {% for item in linies.items %}
+      <li style="display:flex;align-items:flex-start;gap:16px;">
+        <span style="flex-shrink:0;width:10px;height:10px;border-radius:50%;background:#4ADDD5;margin-top:7px;"></span>
+        <span style="font-size:clamp(14px,1.2vw,17px);font-weight:300;line-height:1.7;color:rgba(255,255,255,.85);">
+          <span data-lang="ca">{{ item.ca }}</span>
+          <span data-lang="es">{{ item.es }}</span>
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ACTUALITAT -->
+<section id="actualitat" class="section-pad section-tq">
+  <div class="content-width">
+    <div class="section-header reveal">
+      <div class="section-header-text">
+        <div class="accent-line"></div>
+        <p class="section-eyebrow"><span data-lang="ca">03 — Actualitat i Novetats</span><span data-lang="es">03 — Actualidad y Novedades</span></p>
+        <h2 class="section-title"><span data-lang="ca">Últimes notícies.</span><span data-lang="es">Últimas noticias.</span></h2>
+      </div>
+    </div>
     <div class="news-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
       {% for noticia in collections.noticias %}
         {% if loop.index > 4 %}<div class="news-extra" style="display:none;">{% endif %}
@@ -218,9 +412,9 @@ layout: layouts/base.njk
                 this.setAttribute('data-open','0');
                 this.querySelector('.btn-text-ca').textContent = 'Llegir més';
                 this.querySelector('.btn-text-es').textContent = 'Leer más';
-                window.scrollTo(0, scrollY);
+                requestAnimationFrame(function(){ window.scrollTo(0, scrollY); });
               }
-            " data-open="0" class="btn-outline-black" style="border:none;cursor:pointer;background:none;padding:0;font:inherit;margin-bottom:16px;">
+            " data-open="0" style="display:inline-block;background:none;border:none;padding:0;cursor:pointer;font-size:13px;font-weight:500;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;text-underline-offset:3px;margin-bottom:16px;font-family:inherit;">
               <span class="btn-text-ca" data-lang="ca">Llegir més</span>
               <span class="btn-text-es" data-lang="es">Leer más</span>
             </button>
@@ -440,8 +634,8 @@ layout: layouts/base.njk
             {% endif %}
             {% if item.data.descripcio_ca %}
             <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-top:12px;">
-              <span data-lang="ca">{{ item.data.descripcio_ca }}</span>
-              <span data-lang="es">{{ item.data.descripcio_es }}</span>
+              <span data-lang="ca">{{ item.data.descripcio_ca | linkify | safe }}</span>
+              <span data-lang="es">{{ item.data.descripcio_es | linkify | safe }}</span>
             </p>
             {% endif %}
           </div>
@@ -597,6 +791,20 @@ layout: layouts/base.njk
       io.observe(el);
     });
   });
+  function newsGoPage(page) {
+    document.querySelectorAll('.news-page').forEach(function(p) {
+      p.style.display = p.getAttribute('data-page') == page ? '' : 'none';
+    });
+    document.querySelectorAll('[data-newspage]').forEach(function(b) {
+      var active = b.getAttribute('data-newspage') == page;
+      b.style.background = active ? '#000' : '#fff';
+      b.style.color = active ? '#fff' : '#000';
+      b.style.borderColor = active ? '#000' : '#ddd';
+    });
+    // Scroll suau a la secció de noticias
+    scrollToId('actualitat');
+  }
+
   function getVideoId(url) {
     if (!url) return null;
     var yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
