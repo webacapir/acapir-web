@@ -42,7 +42,7 @@ layout: layouts/base.njk
   <div class="news-band" role="button" tabindex="0"
     onclick="bandClick(this,event,'actualitat');"
     onkeydown="if(event.key==='Enter')bandClick(this,event,'actualitat');">
-    <div class="news-band-bg" style="background-image:url('{{ config.nou_destacat_img | default('/assets/img/informe-2026.jpg') }}');"></div>
+    <div class="news-band-bg" style="background-image:url('{% if config.nou.imatge %}{{ config.nou.imatge }}{% else %}/assets/img/informe-2026.jpg{% endif %}');"></div>
     <div class="news-band-coin">
       <span class="news-band-coin-label"><span data-lang="ca">NOU</span><span data-lang="es">NUEVO</span></span>
       <span class="news-band-coin-date">{{ config.nou.data }}</span>
@@ -194,13 +194,14 @@ layout: layouts/base.njk
             {% if noticia.data.resum_ca %}
             <div id="resum-featured" style="margin-bottom:16px;">
               <p class="resum-truncated" style="font-size:14px;font-weight:300;line-height:1.7;color:#555;">
-                <span data-lang="ca">{{ noticia.data.resum_ca }}</span>
-                <span data-lang="es">{{ noticia.data.resum_es }}</span>
+                <span data-lang="ca">{{ noticia.data.resum_ca | linkify | safe }}</span>
+                <span data-lang="es">{{ noticia.data.resum_es | linkify | safe }}</span>
               </p>
             </div>
             {% endif %}
             {% if noticia.data.resum_ca or noticia.data.cos_ca %}
             <button onclick="
+              var scrollY = window.scrollY;
               var wrap = document.getElementById('resum-featured');
               var cos = document.getElementById('cos-featured');
               var p = wrap ? wrap.querySelector('p') : null;
@@ -215,18 +216,19 @@ layout: layouts/base.njk
                 if (p) p.classList.add('resum-truncated');
                 if (cos) cos.style.display = 'none';
                 this.setAttribute('data-open','0');
-                this.querySelector('.btn-text-ca').textContent = '{{ noticia.data.link_text_ca or "Llegir més" }}';
-                this.querySelector('.btn-text-es').textContent = '{{ noticia.data.link_text_es or "Leer más" }}';
+                this.querySelector('.btn-text-ca').textContent = 'Llegir més';
+                this.querySelector('.btn-text-es').textContent = 'Leer más';
+                window.scrollTo(0, scrollY);
               }
             " data-open="0" class="btn-outline-black" style="border:none;cursor:pointer;background:none;padding:0;font:inherit;margin-bottom:16px;">
-              <span class="btn-text-ca" data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
-              <span class="btn-text-es" data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
+              <span class="btn-text-ca" data-lang="ca">Llegir més</span>
+              <span class="btn-text-es" data-lang="es">Leer más</span>
             </button>
             <div id="cos-featured" style="display:none;margin-top:0;padding-top:16px;border-top:1px solid #eee;">
               {% if noticia.data.cos_ca %}
               <div style="font-size:14px;font-weight:300;line-height:1.8;color:#444;margin-bottom:16px;">
-                <span data-lang="ca">{{ noticia.data.cos_ca | safe }}</span>
-                <span data-lang="es">{{ noticia.data.cos_es | safe }}</span>
+                <span data-lang="ca">{{ noticia.data.cos_ca | linkify | safe }}</span>
+                <span data-lang="es">{{ noticia.data.cos_es | linkify | safe }}</span>
               </div>
               {% endif %}
               {% if noticia.data.link %}
@@ -266,8 +268,8 @@ layout: layouts/base.njk
               style="font-size:12px;font-weight:600;color:#000;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:#4ADDD5;">+ Llegir més</button>
             <div style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid #eee;">
               <p style="font-size:13px;font-weight:300;line-height:1.7;color:#444;margin-bottom:12px;">
-                <span data-lang="ca">{{ noticia.data.cos_ca or noticia.data.resum_ca | safe }}</span>
-                <span data-lang="es">{{ noticia.data.cos_es or noticia.data.resum_es | safe }}</span>
+                <span data-lang="ca">{{ (noticia.data.cos_ca or noticia.data.resum_ca) | linkify | safe }}</span>
+                <span data-lang="es">{{ (noticia.data.cos_es or noticia.data.resum_es) | linkify | safe }}</span>
               </p>
               {% if noticia.data.link %}
               <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"

@@ -3,6 +3,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/assets/favicon.svg");
 
+  // Filtre linkify: converteix URLs en text a enllaços clicables
+  eleventyConfig.addFilter("linkify", function(text) {
+    if (!text) return "";
+    var escaped = String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    return escaped.replace(/(https?:\/\/[^\s<]+)/g,
+      '<a href="$1" target="_blank" rel="noopener" style="color:#4ADDD5;word-break:break-all;">$1</a>');
+  });
+
   // Filtro de fecha
   eleventyConfig.addFilter("dataFormat", function(date) {
     if (!date) return "";

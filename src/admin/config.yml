@@ -10,7 +10,7 @@ locale: ca
 collections:
 
   - name: "config_general"
-    label: "1 · Configuració general"
+    label: "1 · SEO, textos i configuració"
     files:
       - label: "SEO i metadades"
         name: "seo"
@@ -55,7 +55,8 @@ collections:
               - { label: "Text (català)", name: "ca", widget: "string" }
               - { label: "Texto (castellano)", name: "es", widget: "string" }
               - { label: "Data (ex: Juny 2026)", name: "data", widget: "string" }
-              - { label: "Enllaç (ex: #actualitat)", name: "link", widget: "string" }
+              - { label: "Enllaç (ex: #actualitat o URL completa)", name: "link", widget: "string", hint: "Posa #actualitat per baixar a la secció, o una URL completa per anar a una web externa." }
+              - { label: "Imatge de fons (opcional)", name: "imatge", widget: "image", required: false, hint: "Si no en poses cap, apareix la imatge per defecte de l'informe." }
 
   - name: "qui_som"
     label: "2 · Qui som"
