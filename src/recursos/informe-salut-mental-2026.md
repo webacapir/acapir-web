@@ -4,6 +4,7 @@ title_ca: "La salut mental a Catalunya: entre el discurs institucional i la
 title_es: "La salud mental en Catalunya: entre el discurso institucional y la
   práctica real"
 date: 2026-06-18
+tipus: PDF
 resum_ca: "Aquest document analitza la distància entre el que el sistema públic
   de salut mental de Catalunya proposa —una atenció comunitària, integral i
   centrada en la persona— i el que passa en la pràctica quotidiana dels seus
