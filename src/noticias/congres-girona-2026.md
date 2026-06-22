@@ -77,7 +77,7 @@ resum_es: >-
   Finalmente, el Comité Científico del Congreso entregará en el acto de clausura el XX Premio SEPC-ANPIR Jóvenes Investigadores en Psicología Clínica y el X Premio SEPC-ANPIR al mejor artículo sobre Psicología Clínica en el Sistema Nacional de Salud. Galardones que tienen la finalidad de estimular y reconocer la labor de investigación entre los profesionales de la psicología clínica en España.
 
 
-  Todos los interesados en inscribirse al Congreso, pueden hacerlo a través de la web https://congresoanpir.org/
+  Todos los interesados en inscribirse al Congreso, pueden hacerlo a través de la web  https://congresoanpir.org/
 link_text_ca: Enllaç al web del congrés
 esborrany: false
 destacada: false
