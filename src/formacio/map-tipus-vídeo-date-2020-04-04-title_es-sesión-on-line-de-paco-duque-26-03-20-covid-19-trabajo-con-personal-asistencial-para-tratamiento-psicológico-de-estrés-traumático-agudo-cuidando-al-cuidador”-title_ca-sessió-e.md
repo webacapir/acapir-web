@@ -8,6 +8,33 @@ title_es: 'Sesión 2: Paco Duque 2/4/20: Covid-19: Trabajo con personal
 date: 2020-04-04
 tipus: Vídeo
 video_url: https://youtu.be/PlXzuaja8Qc
+descripcio_ca: >-
+  En aquesta ocasió ens van acompanyar també Begoña Arbulo Rufrancos i Marisa
+  García Ontiveros, psicòlogues clíniques.
+
+
+  Enllaços als vídeos utilitzats durant la sessió clínica en línia:
+
+
+  https://youtu.be/_H37xSsO1vY
+
+
+  https://youtu.be/Qe2SdbBBVFI
+
+
+  Enllaç a l'article referenciat durant la sessió:
+
+
+  http://www.cuadernosdecrisis.com/docs/2010/Num9Vol1-2010.pdf
+
+
+  Sobre el ponent:
+
+
+  Francisco Duque Colino és psicòleg clínic adjunt a la Secció d'Interconsulta Hospitalària de l'Hospital General Universitario Gregorio Marañón. Treballa en el tractament de l'estrès traumàtic agut amb víctimes de fets violents a tots els serveis de l'hospital i desenvolupa programes específics d'intervenció en trasplantament hepàtic, trasplantament cardíac i intervenció en crisis. Participa com a docent en la formació de personal sanitari en crisis i emergències en centres sanitaris i unitats especials com Protecció Civil, SAMUR, Creu Roja i grups d'emergències de diferents COP (Col·legis Oficials de Psicologia).
+
+
+  És autor del llibre "Superando el trauma: la vida tras el 11-M" (Editorial La Liebre de Marzo).
 descripcio_es: >-
   En esta ocasión nos acompañaron también Begoña Arbulo Rufrancos y Marisa
   García Ontiveros, psicólogas clínicas.
