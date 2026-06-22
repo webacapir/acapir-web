@@ -5,10 +5,10 @@ title_es: Los psicólogos clínicos catalanes se unen a la huelga de facultativo
   para reivindicar que la salud mental sea una prioridad real
 date: 2023-01-17
 resum_ca: >-
-  Aquí tens la traducció del text al català:
-
-
-  L'Associació Catalana de Psicòlegs Clínics i Residents (ACAPIR), la secció territorial de Catalunya de la Societat Espanyola de Psicologia Clínica – ANPIR, s'uneix a la vaga de facultatius convocada a Catalunya per als dies 25 i 26 de gener.
+  L'Associació Catalana de Psicòlegs Clínics i Residents (ACAPIR), la secció
+  territorial de Catalunya de la Societat Espanyola de Psicologia Clínica –
+  ANPIR, s'uneix a la vaga de facultatius convocada a Catalunya per als dies 25
+  i 26 de gener.
 
 
   Els professionals de la psicologia clínica lamenten que l'atenció mitjana que reben els pacients que arriben a la seva consulta, molts d'ells amb diagnòstics greus, és d'una sessió de 30 minuts cada dos mesos aproximadament.
