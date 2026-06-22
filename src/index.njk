@@ -504,7 +504,7 @@ layout: layouts/base.njk
           <a href="{{ config.xarxes.instagram }}" target="_blank" rel="noopener" class="btn-outline-black">Instagram</a>
         </div>
       </div>
-      <form name="contacte" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+      <form name="contacte" method="POST" action="/gracies" data-netlify="true" netlify-honeypot="bot-field"
         style="display:flex;flex-direction:column;gap:14px;">
         <input type="hidden" name="form-name" value="contacte">
         <p style="display:none;"><label>No ompliu: <input name="bot-field"></label></p>
