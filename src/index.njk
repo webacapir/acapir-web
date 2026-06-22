@@ -180,15 +180,20 @@ layout: layouts/base.njk
             </span>
           </div>
           <div style="padding:28px 28px 32px;background:#fff;flex:1;">
+            <p style="font-size:11px;color:#999;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">
+              {{ noticia.date | dataFormat }} · SCPC-ACAPIR
+            </p>
             <h3 style="font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.01em;margin-bottom:12px;">
               <span data-lang="ca">{{ noticia.data.title_ca }}</span>
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
             {% if noticia.data.resum_ca %}
-            <p style="font-size:14px;font-weight:300;line-height:1.7;color:#555;margin-bottom:20px;">
-              <span data-lang="ca">{{ noticia.data.resum_ca }}</span>
-              <span data-lang="es">{{ noticia.data.resum_es }}</span>
-            </p>
+            <div id="resum-featured" style="margin-bottom:16px;">
+              <p class="resum-truncated" style="font-size:14px;font-weight:300;line-height:1.7;color:#555;">
+                <span data-lang="ca">{{ noticia.data.resum_ca }}</span>
+                <span data-lang="es">{{ noticia.data.resum_es }}</span>
+              </p>
+            </div>
             {% endif %}
             {% if noticia.data.cos_ca %}
             <button onclick="
@@ -225,11 +230,16 @@ layout: layouts/base.njk
         <div style="display:flex;flex-direction:column;gap:24px;">
         {% else %}
         <div class="news-card" style="display:flex;flex-direction:column;">
-          <div style="padding:24px 24px 28px;flex:1;">
-            <p style="font-size:11px;color:#999;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">
-              {{ noticia.data.date | dataFormat }}
+          {% if noticia.data.image %}
+          <div class="news-card-img">
+            <img src="{{ noticia.data.image }}" alt="{{ noticia.data.title_ca }}" loading="lazy" />
+          </div>
+          {% endif %}
+          <div style="padding:20px 20px 24px;flex:1;">
+            <p style="font-size:10px;color:#999;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">
+              {{ noticia.date | dataFormat }}
             </p>
-            <h3 style="font-size:16px;font-weight:700;line-height:1.3;margin-bottom:12px;">
+            <h3 style="font-size:15px;font-weight:700;line-height:1.3;margin-bottom:10px;">
               <span data-lang="ca">{{ noticia.data.title_ca }}</span>
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
@@ -384,7 +394,8 @@ layout: layouts/base.njk
         <div style="border:1px solid rgba(255,255,255,.1);">
           <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;">
             <span style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#4ADDD5;flex-shrink:0;">
-              {% if item.data.video_url %}▶{% else %}{{ item.data.tipus }}{% endif %}
+              {% set is_vid = item.data.video_url or (item.data.link and ('youtu' in item.data.link or 'vimeo' in item.data.link)) %}
+              {% if is_vid %}▶{% else %}{{ item.data.tipus }}{% endif %}
             </span>
             <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,.85);line-height:1.35;flex:1;">
               <span data-lang="ca">{{ item.data.title_ca }}</span>
@@ -398,25 +409,20 @@ layout: layouts/base.njk
             " style="background:none;border:none;color:#4ADDD5;font-size:18px;font-weight:300;cursor:pointer;flex-shrink:0;padding:0 4px;">+</button>
           </div>
           <div style="display:none;padding:0 18px 18px;">
-            {% if item.data.video_url %}
-            <div id="video-{{ loop.index }}" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-              <iframe
-                src="{% if 'youtu' in item.data.video_url %}https://www.youtube.com/embed/{{ item.data.video_url | replace('https://www.youtube.com/watch?v=','') | replace('https://youtu.be/','') | truncate(11, true, '') }}{% elif 'vimeo' in item.data.video_url %}https://player.vimeo.com/video/{{ item.data.video_url | replace('https://vimeo.com/','') }}{% else %}{{ item.data.video_url }}{% endif %}"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                frameborder="0" allowfullscreen loading="lazy"></iframe>
-            </div>
+            {% set vid_url = item.data.video_url or item.data.link %}
+            {% if vid_url and ('youtu' in vid_url or 'vimeo' in vid_url) %}
+            <div data-video="{{ vid_url }}" style="margin-bottom:12px;"></div>
+            {% elif item.data.link %}
+            <a href="{{ item.data.link }}" target="_blank" rel="noopener"
+              style="display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#4ADDD5;text-decoration:none;">
+              <span data-lang="ca">Accedir al material</span><span data-lang="es">Acceder al material</span>
+            </a>
             {% endif %}
             {% if item.data.descripcio_ca %}
             <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-top:12px;">
               <span data-lang="ca">{{ item.data.descripcio_ca }}</span>
               <span data-lang="es">{{ item.data.descripcio_es }}</span>
             </p>
-            {% endif %}
-            {% if item.data.link and not item.data.video_url %}
-            <a href="{{ item.data.link }}" target="_blank" rel="noopener"
-              style="display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#4ADDD5;text-decoration:none;">
-              <span data-lang="ca">Accedir al material</span><span data-lang="es">Acceder al material</span>
-            </a>
             {% endif %}
           </div>
         </div>
@@ -567,6 +573,35 @@ layout: layouts/base.njk
       io.observe(el);
     });
   });
+  function getVideoId(url) {
+    if (!url) return null;
+    var yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+    if (yt) return { type: 'youtube', id: yt[1] };
+    var vm = url.match(/vimeo\.com\/(\d+)/);
+    if (vm) return { type: 'vimeo', id: vm[1] };
+    return null;
+  }
+  function initVideos() {
+    document.querySelectorAll('[data-video]').forEach(function(el) {
+      var url = el.getAttribute('data-video');
+      var info = getVideoId(url);
+      if (!info) return;
+      var thumb = info.type === 'youtube'
+        ? 'https://img.youtube.com/vi/' + info.id + '/hqdefault.jpg'
+        : 'https://vumbnail.com/' + info.id + '.jpg';
+      var embedUrl = info.type === 'youtube'
+        ? 'https://www.youtube.com/embed/' + info.id + '?autoplay=1'
+        : 'https://player.vimeo.com/video/' + info.id + '?autoplay=1';
+      el.innerHTML = '<div class="video-thumb"><img src="' + thumb + '" loading="lazy" /><div class="video-play"><div class="video-play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"/></svg></div></div></div>';
+      el.querySelector('.video-thumb').onclick = function() {
+        el.innerHTML = '<iframe src="' + embedUrl + '" style="width:100%;aspect-ratio:16/9;border:none;" allowfullscreen allow="autoplay"></iframe>';
+      };
+    });
+  }
+  window.addEventListener('DOMContentLoaded', function() {
+    initVideos();
+  });
+
   function getEmbedUrl(url) {
     if (!url) return null;
     // YouTube
