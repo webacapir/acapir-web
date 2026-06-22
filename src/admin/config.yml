@@ -114,6 +114,8 @@ collections:
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Resum (català)", name: "resum_ca", widget: "text", required: false }
       - { label: "Resumen (castellano)", name: "resum_es", widget: "text", required: false }
+      - { label: "Text complet (català)", name: "cos_ca", widget: "markdown", required: false, hint: "Si s'omple, el botó expandeix la notícia. Si no, el botó porta a l'enllaç extern." }
+      - { label: "Texto completo (castellano)", name: "cos_es", widget: "markdown", required: false }
       - { label: "Imatge (opcional)", name: "image", widget: "image", required: false }
       - { label: "Enllaç extern", name: "link", widget: "string", required: false }
       - { label: "Text del botó (català)", name: "link_text_ca", widget: "string", required: false, default: "Llegir més" }

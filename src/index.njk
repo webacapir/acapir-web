@@ -190,7 +190,31 @@ layout: layouts/base.njk
               <span data-lang="es">{{ noticia.data.resum_es }}</span>
             </p>
             {% endif %}
-            {% if noticia.data.link %}
+            {% if noticia.data.cos_ca %}
+            <button onclick="
+              var cos = this.nextElementSibling;
+              var open = cos.style.display !== 'none';
+              cos.style.display = open ? 'none' : 'block';
+              this.querySelector('.btn-text-ca').textContent = open ? '{{ noticia.data.link_text_ca or "Llegir més" }}' : 'Tancar';
+              this.querySelector('.btn-text-es').textContent = open ? '{{ noticia.data.link_text_es or "Leer más" }}' : 'Cerrar';
+            " class="btn-outline-black" style="border:none;cursor:pointer;background:none;padding:0;font:inherit;">
+              <span class="btn-text-ca" data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
+              <span class="btn-text-es" data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
+            </button>
+            <div style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid #eee;">
+              <div style="font-size:14px;font-weight:300;line-height:1.8;color:#444;">
+                <span data-lang="ca">{{ noticia.data.cos_ca | safe }}</span>
+                <span data-lang="es">{{ noticia.data.cos_es | safe }}</span>
+              </div>
+              {% if noticia.data.link %}
+              <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+                style="display:inline-block;margin-top:16px;font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
+                <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir al document" }}</span>
+                <span data-lang="es">{{ noticia.data.link_text_es or "Acceder al documento" }}</span>
+              </a>
+              {% endif %}
+            </div>
+            {% elif noticia.data.link %}
             <a href="{{ noticia.data.link }}" target="_blank" rel="noopener" class="btn-outline-black">
               <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
               <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
@@ -209,7 +233,27 @@ layout: layouts/base.njk
               <span data-lang="ca">{{ noticia.data.title_ca }}</span>
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
-            {% if noticia.data.link %}
+            {% if noticia.data.cos_ca %}
+            <button onclick="
+              var cos = this.nextElementSibling;
+              var open = cos.style.display !== 'none';
+              cos.style.display = open ? 'none' : 'block';
+              this.textContent = open ? '+ Llegir més' : '− Tancar';
+            " style="font-size:12px;font-weight:600;color:#000;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:#4ADDD5;">+ Llegir més</button>
+            <div style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid #eee;">
+              <p style="font-size:13px;font-weight:300;line-height:1.7;color:#444;">
+                <span data-lang="ca">{{ noticia.data.cos_ca | safe }}</span>
+                <span data-lang="es">{{ noticia.data.cos_es | safe }}</span>
+              </p>
+              {% if noticia.data.link %}
+              <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+                style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
+                <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
+                <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
+              </a>
+              {% endif %}
+            </div>
+            {% elif noticia.data.link %}
             <a href="{{ noticia.data.link }}" target="_blank" rel="noopener" style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
               <span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span>
             </a>
