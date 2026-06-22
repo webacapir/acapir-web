@@ -228,7 +228,13 @@ layout: layouts/base.njk
                 this.setAttribute('data-open','0');
                 this.querySelector('.btn-text-ca').textContent = 'Llegir més';
                 this.querySelector('.btn-text-es').textContent = 'Leer más';
-                requestAnimationFrame(function(){ window.scrollTo(0, scrollY); });
+                requestAnimationFrame(function(){ requestAnimationFrame(function(){
+                  var card = document.querySelector('.news-card-featured');
+                  if (card) {
+                    var top = card.getBoundingClientRect().top + window.scrollY - 96;
+                    window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+                  }
+                }); });
               }
             " data-open="0" style="display:inline-block;background:none;border:none;padding:0;cursor:pointer;font-size:13px;font-weight:500;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;text-underline-offset:3px;margin-bottom:16px;font-family:inherit;touch-action:manipulation;">
               <span class="btn-text-ca" data-lang="ca">Llegir més</span>

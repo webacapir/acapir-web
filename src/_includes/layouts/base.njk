@@ -67,7 +67,7 @@
     /* ── Topnav ───────────────────────────────────────────── */
     #topnav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 80px; display: flex; align-items: center;
+      height: 96px; display: flex; align-items: center;
       justify-content: space-between; padding: 0 40px;
       background: transparent; border-bottom: 1px solid transparent;
       transition: height .4s, background .35s, border-color .35s, padding .4s;
@@ -76,7 +76,7 @@
       transition: height .4s; }
     .junta-cell img { width: 68px !important; height: 68px !important; }
     #topnav.solid {
-      height: 52px; padding: 0 28px;
+      height: 64px; padding: 0 28px;
       background: rgba(255,255,255,.96);
       backdrop-filter: blur(12px);
       border-bottom-color: rgba(0,0,0,.08);
@@ -384,6 +384,7 @@
     .resource-card:hover { border-color: #4ADDD5 !important; }
     .topnav-link { transition: border-color .2s, opacity .3s; opacity: 0; pointer-events: none; }
     .topnav-link:hover { border-bottom-color: #4ADDD5; }
+    #topnav.solid img { height: 44px !important; }
     #topnav.solid .topnav-link { opacity: 1; pointer-events: auto; }
     /* ── Menú hamburguesa mòbil ─────────────────────────── */
     .hamburger {
@@ -445,7 +446,7 @@
     /* ── Noticias i vídeo ───────────────────────────────── */
     .resum-truncated {
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 7;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
