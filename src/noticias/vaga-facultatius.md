@@ -43,9 +43,11 @@ resum_ca: >-
 
 
   Finalment, destaquen la importància de “transmetre a la societat expectatives coherents d'acord amb els recursos actuals disponibles, deixant de banda missatges propagandístics sobre la salut mental”. En cas contrari, es continuarà generant una demanda difícilment assumible sense el reforç d'especialistes. “Es parla de nous programes que milloraran l'atenció psicològica però no s'augmenten les places PIR. Qui oferirà els tractaments psicològics si no es formen els especialistes que els puguin oferir?”, es pregunta Punsoda.
-resum_es: >-2
-  
-      La Associació Catalana de Psicòlegs Clínics i Residents (ACAPIR), la sección territorial de Cataluña de la Sociedad Española de Psicología Clínica – ANPIR, se une a la huelga de facultativos convocado en Cataluña para los días 25 y 26 de enero
+resum_es: >-
+  La Associació Catalana de Psicòlegs Clínics i Residents (ACAPIR), la sección
+  territorial de Cataluña de la Sociedad Española de Psicología Clínica – ANPIR,
+  se une a la huelga de facultativos convocado en Cataluña para los días 25 y 26
+  de enero
 
       Los profesionales de la psicología clínica lamentan que la atención media que reciben los pacientes que llegan a su consulta, muchos de ellos con diagnósticos graves, es de una sesión de 30 minutos cada dos meses aproximadamente.
 
