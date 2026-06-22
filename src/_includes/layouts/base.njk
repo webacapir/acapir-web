@@ -371,6 +371,14 @@
       .news-band-coin { width: 38px; height: 38px; }
     }
 
+
+    /* ── Millores generals ──────────────────────────────── */
+    .news-card { transition: box-shadow .2s ease; }
+    .news-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .resource-card { transition: border-color .2s ease; }
+    .resource-card:hover { border-color: #4ADDD5 !important; }
+    .topnav-link { transition: border-color .2s; }
+    .topnav-link:hover { border-bottom-color: #4ADDD5; }
     /* ── Menú hamburguesa mòbil ─────────────────────────── */
     .hamburger {
       display: none;
@@ -479,6 +487,8 @@
         grid-template-columns: 1fr !important;
       }
       #contacte .reveal { grid-template-columns: 1fr !important; }
+      .news-secondary-col { flex-direction: row !important; flex-wrap: wrap; gap: 16px !important; }
+      .news-secondary-col .news-card { width: calc(50% - 8px); }
     }
   
   </style>
