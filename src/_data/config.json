@@ -44,5 +44,13 @@
   "xarxes": {
     "twitter": "https://x.com/acapir_org",
     "instagram": "https://www.instagram.com/scpc_acapir/"
+  },
+  "documentacio": {
+    "intro_ca": "Aquí trobareu els informes, guies i documents elaborats per la SCPC-ACAPIR i d'altres recursos d'interès per als professionals de la psicologia clínica.",
+    "intro_es": "Aquí encontraréis los informes, guías y documentos elaborados por la SCPC-ACAPIR y otros recursos de interés para los profesionales de la psicología clínica."
+  },
+  "formacio": {
+    "intro_ca": "Materials de formació i recursos audiovisuals per als professionals i residents de psicologia clínica.",
+    "intro_es": "Materiales de formación y recursos audiovisuales para los profesionales y residentes de psicología clínica."
   }
 }

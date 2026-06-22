@@ -233,23 +233,19 @@ layout: layouts/base.njk
               <span data-lang="ca">{{ noticia.data.title_ca }}</span>
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
-            {% if noticia.data.cos_ca %}
-            <button onclick="
-              var cos = this.nextElementSibling;
-              var open = cos.style.display !== 'none';
-              cos.style.display = open ? 'none' : 'block';
-              this.textContent = open ? '+ Llegir més' : '− Tancar';
-            " style="font-size:12px;font-weight:600;color:#000;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:#4ADDD5;">+ Llegir més</button>
+            {% if noticia.data.cos_ca or noticia.data.resum_ca %}
+            <button onclick="var c=this.nextElementSibling;var o=c.style.display!=='none';c.style.display=o?'none':'block';this.textContent=o?'+ Llegir més':'− Tancar';"
+              style="font-size:12px;font-weight:600;color:#000;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:#4ADDD5;">+ Llegir més</button>
             <div style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid #eee;">
-              <p style="font-size:13px;font-weight:300;line-height:1.7;color:#444;">
-                <span data-lang="ca">{{ noticia.data.cos_ca | safe }}</span>
-                <span data-lang="es">{{ noticia.data.cos_es | safe }}</span>
+              <p style="font-size:13px;font-weight:300;line-height:1.7;color:#444;margin-bottom:12px;">
+                <span data-lang="ca">{{ noticia.data.cos_ca or noticia.data.resum_ca | safe }}</span>
+                <span data-lang="es">{{ noticia.data.cos_es or noticia.data.resum_es | safe }}</span>
               </p>
               {% if noticia.data.link %}
               <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
                 style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
-                <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
-                <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
+                <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir" }}</span>
+                <span data-lang="es">{{ noticia.data.link_text_es or "Acceder" }}</span>
               </a>
               {% endif %}
             </div>
@@ -292,6 +288,13 @@ layout: layouts/base.njk
         <h2 class="section-title"><span data-lang="ca">Recursos.</span><span data-lang="es">Recursos.</span></h2>
       </div>
     </div>
+
+    {% if config.documentacio.intro_ca %}
+    <p class="reveal" style="font-size:clamp(14px,1.1vw,16px);font-weight:300;line-height:1.7;color:rgba(255,255,255,.6);margin-bottom:40px;max-width:700px;">
+      <span data-lang="ca">{{ config.documentacio.intro_ca }}</span>
+      <span data-lang="es">{{ config.documentacio.intro_es }}</span>
+    </p>
+    {% endif %}
 
     <!-- Recursos principals -->
     <div class="doc-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:48px;">
@@ -367,18 +370,56 @@ layout: layouts/base.njk
 
     <!-- Arxiu de formació -->
     <div class="reveal">
-      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px;">
         <span data-lang="ca">Arxiu de formació</span><span data-lang="es">Archivo de formación</span>
       </p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      {% if config.formacio.intro_ca %}
+      <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:20px;line-height:1.6;">
+        <span data-lang="ca">{{ config.formacio.intro_ca }}</span>
+        <span data-lang="es">{{ config.formacio.intro_es }}</span>
+      </p>
+      {% endif %}
+      <div style="display:flex;flex-direction:column;gap:8px;">
         {% for item in collections.formacio %}
-        <a href="{{ item.data.link }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(255,255,255,.1);text-decoration:none;transition:border-color .2s;">
-          <span style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#4ADDD5;flex-shrink:0;">{{ item.data.tipus }}</span>
-          <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,.75);line-height:1.35;">
-            <span data-lang="ca">{{ item.data.title_ca }}</span>
-            <span data-lang="es">{{ item.data.title_es }}</span>
-          </span>
-        </a>
+        <div style="border:1px solid rgba(255,255,255,.1);">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;">
+            <span style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#4ADDD5;flex-shrink:0;">
+              {% if item.data.video_url %}▶{% else %}{{ item.data.tipus }}{% endif %}
+            </span>
+            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,.85);line-height:1.35;flex:1;">
+              <span data-lang="ca">{{ item.data.title_ca }}</span>
+              <span data-lang="es">{{ item.data.title_es }}</span>
+            </span>
+            <button onclick="
+              var cos = this.closest('div').nextElementSibling;
+              var open = cos.style.display !== 'none';
+              cos.style.display = open ? 'none' : 'block';
+              this.textContent = open ? '+' : '−';
+            " style="background:none;border:none;color:#4ADDD5;font-size:18px;font-weight:300;cursor:pointer;flex-shrink:0;padding:0 4px;">+</button>
+          </div>
+          <div style="display:none;padding:0 18px 18px;">
+            {% if item.data.video_url %}
+            <div id="video-{{ loop.index }}" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+              <iframe
+                src="{% if 'youtu' in item.data.video_url %}https://www.youtube.com/embed/{{ item.data.video_url | replace('https://www.youtube.com/watch?v=','') | replace('https://youtu.be/','') | truncate(11, true, '') }}{% elif 'vimeo' in item.data.video_url %}https://player.vimeo.com/video/{{ item.data.video_url | replace('https://vimeo.com/','') }}{% else %}{{ item.data.video_url }}{% endif %}"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0" allowfullscreen loading="lazy"></iframe>
+            </div>
+            {% endif %}
+            {% if item.data.descripcio_ca %}
+            <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-top:12px;">
+              <span data-lang="ca">{{ item.data.descripcio_ca }}</span>
+              <span data-lang="es">{{ item.data.descripcio_es }}</span>
+            </p>
+            {% endif %}
+            {% if item.data.link and not item.data.video_url %}
+            <a href="{{ item.data.link }}" target="_blank" rel="noopener"
+              style="display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#4ADDD5;text-decoration:none;">
+              <span data-lang="ca">Accedir al material</span><span data-lang="es">Acceder al material</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
         {% endfor %}
       </div>
     </div>
@@ -526,4 +567,24 @@ layout: layouts/base.njk
       io.observe(el);
     });
   });
+  function getEmbedUrl(url) {
+    if (!url) return null;
+    // YouTube
+    var ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
+    if (ytMatch) return 'https://www.youtube.com/embed/' + ytMatch[1];
+    // Vimeo
+    var vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+    if (vimeoMatch) return 'https://player.vimeo.com/video/' + vimeoMatch[1];
+    return null;
+  }
+
+  function toggleExpand(btn, cosEl) {
+    var open = cosEl.style.display !== 'none';
+    cosEl.style.display = open ? 'none' : 'block';
+    var caSpan = btn.querySelector('.btn-text-ca');
+    var esSpan = btn.querySelector('.btn-text-es');
+    if (caSpan) caSpan.textContent = open ? 'Llegir més' : 'Tancar';
+    if (esSpan) esSpan.textContent = open ? 'Leer más' : 'Cerrar';
+  }
+
 </script>

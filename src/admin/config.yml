@@ -36,6 +36,18 @@ collections:
               - { label: "Secció 03 — castellano", name: "s03_es", widget: "string" }
               - { label: "Secció 04 — català", name: "s04_ca", widget: "string" }
               - { label: "Secció 04 — castellano", name: "s04_es", widget: "string" }
+          - label: "Documentació — Text introductori"
+            name: "documentacio"
+            widget: "object"
+            fields:
+              - { label: "Text (català)", name: "intro_ca", widget: "text", required: false }
+              - { label: "Texto (castellano)", name: "intro_es", widget: "text", required: false }
+          - label: "Formació — Text introductori"
+            name: "formacio"
+            widget: "object"
+            fields:
+              - { label: "Text (català)", name: "intro_ca", widget: "text", required: false }
+              - { label: "Texto (castellano)", name: "intro_es", widget: "text", required: false }
           - label: "Destacat NOU"
             name: "nou"
             widget: "object"
@@ -154,7 +166,10 @@ collections:
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Tipus (PDF, Vídeo...)", name: "tipus", widget: "string", default: "PDF" }
-      - { label: "Enllaç", name: "link", widget: "string" }
+      - { label: "URL del vídeo (YouTube o Vimeo)", name: "video_url", widget: "string", required: false, hint: "Posa la URL completa del vídeo. Si hi ha vídeo, s'incrusta a la web." }
+      - { label: "Descripció (català)", name: "descripcio_ca", widget: "text", required: false }
+      - { label: "Descripción (castellano)", name: "descripcio_es", widget: "text", required: false }
+      - { label: "Enllaç (PDF o web)", name: "link", widget: "string", required: false }
 
   - name: "documents"
     label: "8 · Documents institucionals"
