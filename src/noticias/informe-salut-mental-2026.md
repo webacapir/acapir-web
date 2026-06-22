@@ -1,8 +1,8 @@
 ---
-title_ca: "La salut mental a Catalunya: entre el discurs institucional i la
-  pràctica real"
-title_es: "La salud mental en Catalunya: entre el discurso institucional y la
-  práctica real"
+title_ca: "La SCPC-ACAPIR presenta l'informe ‘La salut mental a Catalunya: Entre
+  el discurs institucional i la pràctica real’"
+title_es: "La SCPC-ACAPIR presenta el informe ‘La salud mental en Cataluña:
+  Entre el discurso institucional y la práctica real’"
 date: 2026-06-18
 resum_ca: >-
   La Societat Catalana de Psicologia Clínica (SCPC-ACAPIR) ha presentat
