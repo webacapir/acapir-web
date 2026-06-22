@@ -1,9 +1,38 @@
 {
-  "seo": {
-    "titol": "SCPC-ACAPIR · Societat Catalana de Psicologia Clínica",
-    "descripcio_ca": "La Societat Catalana de Psicologia Clínica (SCPC-ACAPIR) representa els especialistes en Psicologia Clínica a Catalunya. Defensem una atenció psicològica de qualitat en el sistema sanitari públic.",
-    "descripcio_es": "La Societat Catalana de Psicología Clínica (SCPC-ACAPIR) representa a los especialistas en Psicología Clínica en Catalunya. Defendemos una atención psicológica de calidad en el sistema sanitario público.",
-    "paraules_clau": "acapir, societat catalana de psicologia clinica, SCPC-ACAPIR, psicologia clinica Catalunya, psicologia publica Catalunya, PEPC, PIR, salut mental Catalunya, psicología clínica Cataluña, SEPC-ANPIR"
+  "presentacio": {
+    "ca": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR és la secció territorial a Catalunya de la SEPC·ANPIR. A Catalunya ja som més de 400 sòcies i socis —entre especialistes i residents de Psicologia Clínica— que treballem activament per una atenció en salut mental pública, universal i de qualitat.",
+    "es": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR es la sección territorial en Catalunya de la SEPC·ANPIR. En Catalunya ya somos más de 400 socias y socios —entre especialistas y residentes de Psicología Clínica— que trabajamos activamente por una atención en salud mental pública, universal y de calidad."
+  },
+  "documentacio": {
+    "intro_ca": "Aquí trobareu els informes, guies i documents elaborats per la SCPC-ACAPIR i d'altres recursos d'interès per als professionals de la psicologia clínica.",
+    "intro_es": "Aquí encontraréis los informes, guías y documentos elaborados por la SCPC-ACAPIR y otros recursos de interés para los profesionales de la psicología clínica."
+  },
+  "contacte": {
+    "email": "secretaria@acapir.cat",
+    "titol_ca": "En parlem.",
+    "titol_es": "Hablemos.",
+    "subtitol_ca": "Secretaria de la SCPC·ACAPIR",
+    "subtitol_es": "Secretaría de la SCPC·ACAPIR"
+  },
+  "formacio": {
+    "intro_ca": "Materials de formació i recursos audiovisuals per a professionals de psicologia clínica.",
+    "intro_es": "Materiales de formación y recursos audiovisuales para profesionales de psicología clínica."
+  },
+  "associa": {
+    "titol_ca": "Vols formar part de la SCPC·ACAPIR?",
+    "titol_es": "¿Quieres formar parte de la SCPC·ACAPIR?",
+    "text_ca": "Per associar-te has de fer-te soci/a de la SEPC·ANPIR i marcar com a associació territorial la SCPC·ACAPIR.",
+    "text_es": "Para asociarte debes hacerte socio/a de la SEPC·ANPIR y marcar como asociación territorial la SCPC·ACAPIR.",
+    "link": "https://www.anpir.org/socios/alta_socios.php",
+    "btn_ca": "Associa't",
+    "btn_es": "Asóciate"
+  },
+  "nou": {
+    "ca": "La salut mental a Catalunya: entre el discurs institucional i la pràctica real",
+    "es": "La salud mental en Catalunya: entre el discurso institucional y la práctica real",
+    "data": "Juny 2026",
+    "link": "#actualitat",
+    "imatge": ""
   },
   "hero": {
     "s01_ca": "Qui som",
@@ -15,43 +44,14 @@
     "s04_ca": "Documentació i Formació",
     "s04_es": "Documentación y Formación"
   },
-  "nou": {
-    "ca": "La salut mental a Catalunya: entre el discurs institucional i la pràctica real",
-    "es": "La salud mental en Catalunya: entre el discurso institucional y la práctica real",
-    "data": "Juny 2026",
-    "link": "#actualitat",
-    "imatge": ""
-  },
-  "presentacio": {
-    "ca": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR és la secció territorial a Catalunya de la SEPC·ANPIR. A Catalunya ja som més de 400 sòcies i socis —entre especialistes i residents de Psicologia Clínica— que treballem activament per una atenció en salut mental pública, universal i de qualitat.",
-    "es": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR es la sección territorial en Catalunya de la SEPC·ANPIR. En Catalunya ya somos más de 400 socias y socios —entre especialistas y residentes de Psicología Clínica— que trabajamos activamente por una atención en salud mental pública, universal y de calidad."
-  },
-  "associa": {
-    "titol_ca": "Vols formar part de la SCPC·ACAPIR?",
-    "titol_es": "¿Quieres formar parte de la SCPC·ACAPIR?",
-    "text_ca": "Per associar-te has de fer-te soci/a de la SEPC·ANPIR i marcar com a associació territorial la SCPC·ACAPIR.",
-    "text_es": "Para asociarte debes hacerte socio/a de la SEPC·ANPIR y marcar como asociación territorial la SCPC·ACAPIR.",
-    "link": "https://www.anpir.org/socios/alta_socios.php",
-    "btn_ca": "Associa't",
-    "btn_es": "Asóciate"
-  },
-  "contacte": {
-    "email": "secretaria@acapir.cat",
-    "titol_ca": "En parlem.",
-    "titol_es": "Hablemos.",
-    "subtitol_ca": "Secretaria de la SCPC·ACAPIR",
-    "subtitol_es": "Secretaría de la SCPC·ACAPIR"
+  "seo": {
+    "titol": "SCPC-ACAPIR · Societat Catalana de Psicologia Clínica",
+    "descripcio_ca": "La Societat Catalana de Psicologia Clínica (SCPC-ACAPIR) representa els especialistes en Psicologia Clínica a Catalunya. Defensem una atenció psicològica de qualitat en el sistema sanitari públic.",
+    "descripcio_es": "La Societat Catalana de Psicología Clínica (SCPC-ACAPIR) representa a los especialistas en Psicología Clínica en Catalunya. Defendemos una atención psicológica de calidad en el sistema sanitario público.",
+    "paraules_clau": "acapir, societat catalana de psicologia clinica, SCPC-ACAPIR, psicologia clinica Catalunya, psicologia publica Catalunya, PEPC, PIR, salut mental Catalunya, psicología clínica Cataluña, SEPC-ANPIR"
   },
   "xarxes": {
     "twitter": "https://x.com/acapir_org",
     "instagram": "https://www.instagram.com/scpc_acapir/"
-  },
-  "documentacio": {
-    "intro_ca": "Aquí trobareu els informes, guies i documents elaborats per la SCPC-ACAPIR i d'altres recursos d'interès per als professionals de la psicologia clínica.",
-    "intro_es": "Aquí encontraréis los informes, guías y documentos elaborados por la SCPC-ACAPIR y otros recursos de interés para los profesionales de la psicología clínica."
-  },
-  "formacio": {
-    "intro_ca": "Materials de formació i recursos audiovisuals per als professionals i residents de psicologia clínica.",
-    "intro_es": "Materiales de formación y recursos audiovisuales para los profesionales y residentes de psicología clínica."
   }
 }
