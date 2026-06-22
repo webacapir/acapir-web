@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/assets/favicon.svg");
 
   // Filtro de fecha
   eleventyConfig.addFilter("dataFormat", function(date) {
@@ -10,15 +11,30 @@ module.exports = function(eleventyConfig) {
     return mesos[d.getMonth()] + " " + d.getFullYear();
   });
 
-  // Ordenar noticias por fecha descendente
+  // Noticias ordenadas por fecha descendente
   eleventyConfig.addCollection("noticias", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/noticias/*.md")
+      .filter(item => !item.data.esborrany)
       .sort((a, b) => b.date - a.date);
   });
 
-  // Ordenar recursos por fecha descendente
+  // Recursos ordenados por fecha descendente
   eleventyConfig.addCollection("recursos", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/recursos/*.md")
+      .filter(item => !item.data.esborrany)
+      .sort((a, b) => b.date - a.date);
+  });
+
+  // Arxiu de formació
+  eleventyConfig.addCollection("formacio", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/formacio/*.md")
+      .sort((a, b) => b.date - a.date);
+  });
+
+  // Documents institucionals
+  eleventyConfig.addCollection("documents", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/documents/*.md")
+      .filter(item => !item.data.esborrany)
       .sort((a, b) => b.date - a.date);
   });
 

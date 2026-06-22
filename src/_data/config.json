@@ -1,24 +1,48 @@
 {
-  "email": "secretaria@acapir.cat",
-  "twitter": "https://x.com/acapir_org",
-  "instagram": "https://www.instagram.com/scpc_acapir/",
-  "nou_destacat_ca": "La salut mental a Catalunya: entre el discurs institucional i la pràctica real",
-  "nou_destacat_es": "La salud mental en Catalunya: entre el discurso institucional y la práctica real",
-  "nou_destacat_data": "Juny 2026",
-  "nou_destacat_link": "#actualitat",
-  "presentacio_ca": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR és la secció territorial a Catalunya de la SEPC·ANPIR. A Catalunya ja som més de 400 sòcies i socis —entre especialistes i residents de Psicologia Clínica— que treballem activament per una atenció en salut mental pública, universal i de qualitat.",
-  "presentacio_es": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR es la sección territorial en Catalunya de la SEPC·ANPIR. En Catalunya ya somos más de 400 socias y socios —entre especialistas y residentes de Psicología Clínica— que trabajamos activamente por una atención en salud mental pública, universal y de calidad.",
-  "associa_titol_ca": "Vols formar part de la SCPC·ACAPIR?",
-  "associa_titol_es": "¿Quieres formar parte de la SCPC·ACAPIR?",
-  "associa_text_ca": "Per associar-te has de fer-te soci/a de la SEPC·ANPIR i marcar com a associació territorial la SCPC·ACAPIR.",
-  "associa_text_es": "Para asociarte debes hacerte socio/a de la SEPC·ANPIR y marcar como asociación territorial la SCPC·ACAPIR.",
-  "associa_link": "https://www.anpir.org/socios/alta_socios.php",
-  "associa_btn_ca": "Associa't",
-  "associa_btn_es": "Asóciate",
-  "contacte_titol_ca": "En parlem.",
-  "contacte_titol_es": "Hablemos.",
-  "contacte_subtitol_ca": "Secretaria de la SCPC·ACAPIR",
-  "contacte_subtitol_es": "Secretaría de la SCPC·ACAPIR",
-  "seo_titol": "SCPC-ACAPIR · Societat Catalana de Psicologia Clínica",
-  "seo_descripcio": "Societat Catalana de Psicologia Clínica – ACAPIR. Sección territorial de Catalunya de la SEPC·ANPIR."
+  "seo": {
+    "titol": "SCPC-ACAPIR · Societat Catalana de Psicologia Clínica",
+    "descripcio_ca": "La Societat Catalana de Psicologia Clínica (SCPC-ACAPIR) representa els especialistes en Psicologia Clínica a Catalunya. Defensem una atenció psicològica de qualitat en el sistema sanitari públic.",
+    "descripcio_es": "La Societat Catalana de Psicología Clínica (SCPC-ACAPIR) representa a los especialistas en Psicología Clínica en Catalunya. Defendemos una atención psicológica de calidad en el sistema sanitario público.",
+    "paraules_clau": "acapir, societat catalana de psicologia clinica, SCPC-ACAPIR, psicologia clinica Catalunya, psicologia publica Catalunya, PEPC, PIR, salut mental Catalunya, psicología clínica Cataluña, SEPC-ANPIR"
+  },
+  "hero": {
+    "s01_ca": "Qui som",
+    "s01_es": "Quiénes somos",
+    "s02_ca": "Línies de treball",
+    "s02_es": "Líneas de trabajo",
+    "s03_ca": "Actualitat",
+    "s03_es": "Actualidad",
+    "s04_ca": "Documentació i Formació",
+    "s04_es": "Documentación y Formación"
+  },
+  "nou": {
+    "ca": "La salut mental a Catalunya: entre el discurs institucional i la pràctica real",
+    "es": "La salud mental en Catalunya: entre el discurso institucional y la práctica real",
+    "data": "Juny 2026",
+    "link": "#actualitat"
+  },
+  "presentacio": {
+    "ca": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR és la secció territorial a Catalunya de la SEPC·ANPIR. A Catalunya ja som més de 400 sòcies i socis —entre especialistes i residents de Psicologia Clínica— que treballem activament per una atenció en salut mental pública, universal i de qualitat.",
+    "es": "La Societat Catalana de Psicologia Clínica SCPC·ACAPIR es la sección territorial en Catalunya de la SEPC·ANPIR. En Catalunya ya somos más de 400 socias y socios —entre especialistas y residentes de Psicología Clínica— que trabajamos activamente por una atención en salud mental pública, universal y de calidad."
+  },
+  "associa": {
+    "titol_ca": "Vols formar part de la SCPC·ACAPIR?",
+    "titol_es": "¿Quieres formar parte de la SCPC·ACAPIR?",
+    "text_ca": "Per associar-te has de fer-te soci/a de la SEPC·ANPIR i marcar com a associació territorial la SCPC·ACAPIR.",
+    "text_es": "Para asociarte debes hacerte socio/a de la SEPC·ANPIR y marcar como asociación territorial la SCPC·ACAPIR.",
+    "link": "https://www.anpir.org/socios/alta_socios.php",
+    "btn_ca": "Associa't",
+    "btn_es": "Asóciate"
+  },
+  "contacte": {
+    "email": "secretaria@acapir.cat",
+    "titol_ca": "En parlem.",
+    "titol_es": "Hablemos.",
+    "subtitol_ca": "Secretaria de la SCPC·ACAPIR",
+    "subtitol_es": "Secretaría de la SCPC·ACAPIR"
+  },
+  "xarxes": {
+    "twitter": "https://x.com/acapir_org",
+    "instagram": "https://www.instagram.com/scpc_acapir/"
+  }
 }

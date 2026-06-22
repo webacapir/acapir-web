@@ -8,32 +8,32 @@ layout: layouts/base.njk
     <button class="band" type="button" data-section="qui-som" onclick="bandClick(this,event,'qui-som')">
       <span class="band-num">01</span>
       <span class="band-content-wrap">
-        <span class="band-title" data-lang="ca">Qui som</span>
-        <span class="band-title" data-lang="es">Quiénes somos</span>
+        <span class="band-title" data-lang="ca">{{ config.hero.s01_ca }}</span>
+        <span class="band-title" data-lang="es">{{ config.hero.s01_es }}</span>
       </span>
     </button>
 
     <button class="band" type="button" data-section="linies" onclick="bandClick(this,event,'linies')">
       <span class="band-num">02</span>
       <span class="band-content-wrap">
-        <span class="band-title" data-lang="ca">Línies de treball</span>
-        <span class="band-title" data-lang="es">Líneas de trabajo</span>
+        <span class="band-title" data-lang="ca">{{ config.hero.s02_ca }}</span>
+        <span class="band-title" data-lang="es">{{ config.hero.s02_es }}</span>
       </span>
     </button>
 
     <button class="band" type="button" data-section="actualitat" onclick="bandClick(this,event,'actualitat')">
       <span class="band-num">03</span>
       <span class="band-content-wrap">
-        <span class="band-title" data-lang="ca">Actualitat</span>
-        <span class="band-title" data-lang="es">Actualidad</span>
+        <span class="band-title" data-lang="ca">{{ config.hero.s03_ca }}</span>
+        <span class="band-title" data-lang="es">{{ config.hero.s03_es }}</span>
       </span>
     </button>
 
     <button class="band" type="button" data-section="documentacio" onclick="bandClick(this,event,'documentacio')">
       <span class="band-num">04</span>
       <span class="band-content-wrap">
-        <span class="band-title" data-lang="ca">Documentació i Formació</span>
-        <span class="band-title" data-lang="es">Documentación y Formación</span>
+        <span class="band-title" data-lang="ca">{{ config.hero.s04_ca }}</span>
+        <span class="band-title" data-lang="es">{{ config.hero.s04_es }}</span>
       </span>
     </button>
 
@@ -45,13 +45,13 @@ layout: layouts/base.njk
     <div class="news-band-bg" style="background-image:url('{{ config.nou_destacat_img | default('/assets/img/informe-2026.jpg') }}');"></div>
     <div class="news-band-coin">
       <span class="news-band-coin-label"><span data-lang="ca">NOU</span><span data-lang="es">NUEVO</span></span>
-      <span class="news-band-coin-date">{{ config.nou_destacat_data }}</span>
+      <span class="news-band-coin-date">{{ config.nou.data }}</span>
     </div>
     <div class="news-band-text">
       <span class="news-band-eyebrow"><span data-lang="ca">Informe SCPC-ACAPIR</span><span data-lang="es">Informe SCPC-ACAPIR</span></span>
       <span class="news-band-title">
-        <span data-lang="ca">{{ config.nou_destacat_ca }}</span>
-        <span data-lang="es">{{ config.nou_destacat_es }}</span>
+        <span data-lang="ca">{{ config.nou.ca }}</span>
+        <span data-lang="es">{{ config.nou.es }}</span>
       </span>
     </div>
   </div>
@@ -66,48 +66,59 @@ layout: layouts/base.njk
       <div class="section-header-text">
         <div class="accent-line"></div>
         <p class="section-eyebrow"><span data-lang="ca">01 — Qui som</span><span data-lang="es">01 — Quiénes somos</span></p>
-        <h2 class="section-title"><span data-lang="ca">La nostra associació.</span><span data-lang="es">Nuestra asociación.</span></h2>
+        <h2 class="section-title"><span data-lang="ca">Qui som.</span><span data-lang="es">Quiénes somos.</span></h2>
       </div>
     </div>
     <div class="about-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
       <div>
         <p style="font-size:clamp(15px,1.3vw,18px);font-weight:300;line-height:1.8;color:#333;">
-          <span data-lang="ca">La Societat Catalana de Psicologia Clínica SCPC·ACAPIR és la secció territorial a Catalunya de la SEPC·ANPIR. A Catalunya ja som més de 400 sòcies i socis —entre especialistes i residents de Psicologia Clínica— que treballem activament per una atenció en salut mental pública, universal i de qualitat.</span>
-          <span data-lang="es">La Societat Catalana de Psicologia Clínica SCPC·ACAPIR es la sección territorial en Catalunya de la SEPC·ANPIR. En Catalunya ya somos más de 400 socias y socios —entre especialistas y residentes de Psicología Clínica— que trabajamos activamente por una atención en salud mental pública, universal y de calidad.</span>
+          <span data-lang="ca">{{ config.presentacio.ca }}</span>
+          <span data-lang="es">{{ config.presentacio.es }}</span>
         </p>
       </div>
       <div style="background:#f8f8f8;padding:28px 32px;border-left:3px solid #4ADDD5;">
-        <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-bottom:16px;">
-          <span data-lang="ca">Junta Directiva</span><span data-lang="es">Junta Directiva</span>
+        <p style="font-size:clamp(14px,1.1vw,16px);font-weight:600;margin-bottom:8px;">
+          <span data-lang="ca">{{ config.associa.titol_ca }}</span>
+          <span data-lang="es">{{ config.associa.titol_es }}</span>
         </p>
-        <div class="junta-grid">
-          {% for m in junta.membres %}
-          <div class="junta-cell{% if m.vocal %} is-vocal{% endif %}">
-            <div class="junta-role">
-              <span data-lang="ca">{{ m.rol_ca }}</span>
-              <span data-lang="es">{{ m.rol_es }}</span>
-            </div>
-            <div class="junta-name">{{ m.nom }}</div>
-          </div>
-          {% endfor %}
-        </div>
+        <p style="font-size:13px;font-weight:300;color:#555;line-height:1.6;margin-bottom:20px;">
+          <span data-lang="ca">{{ config.associa.text_ca }}</span>
+          <span data-lang="es">{{ config.associa.text_es }}</span>
+        </p>
+        <a href="{{ config.associa.link }}" target="_blank" rel="noopener" class="btn-outline-black">
+          <span data-lang="ca">{{ config.associa.btn_ca }}</span><span data-lang="es">{{ config.associa.btn_es }}</span>
+        </a>
       </div>
     </div>
 
-    <div class="sub-strip reveal">
-      <div>
-        <p style="font-size:clamp(14px,1.1vw,16px);font-weight:600;margin-bottom:6px;">
-          <span data-lang="ca">Vols formar part de la SCPC·ACAPIR?</span>
-          <span data-lang="es">¿Quieres formar parte de la SCPC·ACAPIR?</span>
-        </p>
-        <p style="font-size:13px;font-weight:300;color:#555;line-height:1.6;">
-          <span data-lang="ca">Per associar-te has de fer-te soci/a de la SEPC·ANPIR i marcar com a associació territorial la SCPC·ACAPIR.</span>
-          <span data-lang="es">Para asociarte debes hacerte socio/a de la SEPC·ANPIR y marcar como asociación territorial la SCPC·ACAPIR.</span>
-        </p>
+    <div class="reveal" style="margin-top:40px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-bottom:20px;">
+        <span data-lang="ca">Junta Directiva</span><span data-lang="es">Junta Directiva</span>
+      </p>
+      <div style="display:grid;grid-template-columns:{% if junta.foto_grup %}2fr 1fr{% else %}1fr{% endif %};gap:32px;align-items:start;">
+        <div class="junta-grid">
+          {% for m in junta.membres %}
+          <div class="junta-cell{% if m.vocal %} is-vocal{% endif %}" style="{% if m.foto %}display:flex;align-items:center;gap:10px;{% endif %}">
+            {% if m.foto %}
+            <img src="{{ m.foto }}" alt="{{ m.nom }}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
+            {% endif %}
+            <div>
+              <div class="junta-role">
+                <span data-lang="ca">{{ m.rol_ca }}</span>
+                <span data-lang="es">{{ m.rol_es }}</span>
+              </div>
+              <div class="junta-name">{{ m.nom }}</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% if junta.foto_grup %}
+        <div>
+          <img src="{{ junta.foto_grup }}" alt="Junta Directiva SCPC-ACAPIR"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover;" />
+        </div>
+        {% endif %}
       </div>
-      <a href="https://www.anpir.org/socios/alta_socios.php" target="_blank" rel="noopener" class="btn-outline-black">
-        <span data-lang="ca">Associa't</span><span data-lang="es">Asóciate</span>
-      </a>
     </div>
   </div>
 </section>
@@ -121,7 +132,7 @@ layout: layouts/base.njk
       <div class="section-header-text">
         <div class="accent-line"></div>
         <p class="section-eyebrow"><span data-lang="ca">02 — Línies de treball</span><span data-lang="es">02 — Líneas de trabajo</span></p>
-        <h2 class="section-title"><span data-lang="ca">Com actuem.</span><span data-lang="es">Cómo actuamos.</span></h2>
+        <h2 class="section-title"><span data-lang="ca">Línies de treball.</span><span data-lang="es">Líneas de trabajo.</span></h2>
       </div>
     </div>
     <ul style="list-style:none;display:flex;flex-direction:column;gap:20px;" class="reveal-group">
@@ -152,6 +163,7 @@ layout: layouts/base.njk
     </div>
     <div class="news-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
       {% for noticia in collections.noticias %}
+        {% if loop.index > 4 %}<div class="news-extra" style="display:none;">{% endif %}
         {% if loop.first %}
         <div class="news-card news-card-featured" style="display:flex;flex-direction:column;">
           <div style="height:260px;overflow:hidden;position:relative;">
@@ -168,13 +180,20 @@ layout: layouts/base.njk
             </span>
           </div>
           <div style="padding:28px 28px 32px;background:#fff;flex:1;">
-            <h3 style="font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.01em;margin-bottom:16px;">
+            <h3 style="font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.01em;margin-bottom:12px;">
               <span data-lang="ca">{{ noticia.data.title_ca }}</span>
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
+            {% if noticia.data.resum_ca %}
+            <p style="font-size:14px;font-weight:300;line-height:1.7;color:#555;margin-bottom:20px;">
+              <span data-lang="ca">{{ noticia.data.resum_ca }}</span>
+              <span data-lang="es">{{ noticia.data.resum_es }}</span>
+            </p>
+            {% endif %}
             {% if noticia.data.link %}
             <a href="{{ noticia.data.link }}" target="_blank" rel="noopener" class="btn-outline-black">
-              <span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span>
+              <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
+              <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
             </a>
             {% endif %}
           </div>
@@ -200,6 +219,19 @@ layout: layouts/base.njk
         {% endif %}
       {% endfor %}
       </div><!-- fi notícies anteriors -->
+      {% if collections.noticias.length > 4 %}
+      </div><!-- fi news-extra -->
+      <div style="text-align:center;margin-top:32px;">
+        <button onclick="
+          var extras = document.querySelectorAll('.news-extra');
+          extras.forEach(function(el){el.style.display='block'});
+          this.style.display='none';
+        " class="btn-outline-black" style="display:inline-flex;">
+          <span data-lang="ca">Veure totes les notícies</span>
+          <span data-lang="es">Ver todas las noticias</span>
+        </button>
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -216,67 +248,140 @@ layout: layouts/base.njk
         <h2 class="section-title"><span data-lang="ca">Recursos.</span><span data-lang="es">Recursos.</span></h2>
       </div>
     </div>
-    <div class="doc-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px;">
+
+    <!-- Recursos principals -->
+    <div class="doc-grid reveal-group" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:48px;">
       {% for recurs in collections.recursos %}
-      <div class="resource-card{% if recurs.data.destacat %} " style="border-color:#4ADDD5;background:rgba(74,221,213,.04);padding:0;overflow:hidden;"{% else %}"{% endif %}>
+      <div class="resource-card" style="{% if recurs.data.destacat %}border-color:#4ADDD5;background:rgba(74,221,213,.04);{% endif %}padding:0;overflow:hidden;">
         {% if recurs.data.image %}
-        <div style="height:140px;overflow:hidden;position:relative;">
+        <div style="height:110px;overflow:hidden;position:relative;">
           <img src="{{ recurs.data.image }}" alt="{{ recurs.data.title_ca }}" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;" />
           <div style="position:absolute;inset:0;background:rgba(0,0,0,.35);"></div>
-          <span style="position:absolute;top:12px;right:12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:3px 8px;background:rgba(0,0,0,.3);">
-            {{ recurs.data.date | dataFormat }}
+          <span style="position:absolute;top:12px;left:12px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;background:#4ADDD5;padding:3px 8px;">
+            {{ recurs.data.tipus }}
           </span>
         </div>
         <div style="padding:24px 28px 28px;">
+        {% else %}
+        <div style="padding:24px 28px 28px;">
+          {% if recurs.data.tipus %}
+          <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4ADDD5;display:block;margin-bottom:12px;">{{ recurs.data.tipus }}</span>
+          {% endif %}
         {% endif %}
-        <h3 style="font-size:18px;font-weight:700;margin-bottom:12px;line-height:1.3;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px;line-height:1.3;">
           <span data-lang="ca">{{ recurs.data.title_ca }}</span>
           <span data-lang="es">{{ recurs.data.title_es }}</span>
         </h3>
+        {% if recurs.data.resum_ca %}
+        <p style="font-size:13px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:16px;">
+          <span data-lang="ca">{{ recurs.data.resum_ca }}</span>
+          <span data-lang="es">{{ recurs.data.resum_es }}</span>
+        </p>
+        {% endif %}
         {% if recurs.data.autors %}
-        <p style="font-size:13px;font-weight:300;line-height:1.7;color:rgba(255,255,255,.6);margin-bottom:8px;">{{ recurs.data.autors }}</p>
+        <p style="font-size:12px;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:6px;">{{ recurs.data.autors }}</p>
         {% endif %}
         {% if recurs.data.isbn %}
-        <p style="font-size:12px;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:24px;">ISBN {{ recurs.data.isbn }} · {{ recurs.data.llicencia }}</p>
+        <p style="font-size:12px;font-weight:300;color:rgba(255,255,255,.35);margin-bottom:16px;">ISBN {{ recurs.data.isbn }} · {{ recurs.data.llicencia }}</p>
         {% endif %}
         <a href="{{ recurs.data.link }}" target="_blank" rel="noopener" class="btn-outline-white">
           <span data-lang="ca">Accedir al document</span><span data-lang="es">Acceder al documento</span>
         </a>
-        {% if recurs.data.image %}
         </div>
-        {% endif %}
       </div>
       {% endfor %}
     </div>
+
+    <!-- Documents institucionals (només si n'hi ha) -->
+    {% if collections.documents and collections.documents.length > 0 %}
+    <div class="reveal" style="margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1);">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;">
+        <span data-lang="ca">Documents institucionals</span><span data-lang="es">Documentos institucionales</span>
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        {% for doc in collections.documents %}
+        <a href="{{ doc.data.fitxer }}" target="_blank" rel="noopener"
+          style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border:1px solid rgba(255,255,255,.1);text-decoration:none;transition:border-color .2s;">
+          <div>
+            <span style="font-size:13px;font-weight:500;color:#fff;display:block;margin-bottom:3px;">
+              <span data-lang="ca">{{ doc.data.title_ca }}</span>
+              <span data-lang="es">{{ doc.data.title_es }}</span>
+            </span>
+            {% if doc.data.descripcio_ca %}
+            <span style="font-size:12px;color:rgba(255,255,255,.45);">
+              <span data-lang="ca">{{ doc.data.descripcio_ca }}</span>
+              <span data-lang="es">{{ doc.data.descripcio_es }}</span>
+            </span>
+            {% endif %}
+          </div>
+          <span style="font-size:10px;font-weight:700;letter-spacing:.1em;color:#4ADDD5;flex-shrink:0;margin-left:16px;">PDF ↓</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Arxiu de formació -->
+    <div class="reveal">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;">
+        <span data-lang="ca">Arxiu de formació</span><span data-lang="es">Archivo de formación</span>
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        {% for item in collections.formacio %}
+        <a href="{{ item.data.link }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid rgba(255,255,255,.1);text-decoration:none;transition:border-color .2s;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.08em;color:#4ADDD5;flex-shrink:0;">{{ item.data.tipus }}</span>
+          <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,.75);line-height:1.35;">
+            <span data-lang="ca">{{ item.data.title_ca }}</span>
+            <span data-lang="es">{{ item.data.title_es }}</span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- CONTACTE -->
-<section id="contacte" class="section-pad" style="background:#000;color:#fff;">
+<section id="contacte" class="section-pad" style="background:#f8f8f8;">
   <div class="content-width">
     <div class="section-header reveal">
       <div class="section-header-text">
         <div class="accent-line"></div>
-        <p class="section-eyebrow" style="color:rgba(255,255,255,.4);"><span data-lang="ca">Contacte</span><span data-lang="es">Contacto</span></p>
-        <h2 class="section-title" style="color:#fff;"><span data-lang="ca">Parlem.</span><span data-lang="es">Hablemos.</span></h2>
+        <p class="section-eyebrow" style="color:#666;"><span data-lang="ca">Contacte</span><span data-lang="es">Contacto</span></p>
+        <h2 class="section-title" style="color:#000;"><span data-lang="ca">{{ config.contacte.titol_ca }}</span><span data-lang="es">{{ config.contacte.titol_es }}</span></h2>
       </div>
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:32px;" class="reveal">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
       <div>
-        <p style="font-size:clamp(20px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;">
-          <a href="mailto:{{ config.email }}" style="color:#4ADDD5;text-decoration:none;">{{ config.email }}</a>
+        <p style="font-size:clamp(14px,1.1vw,16px);font-weight:300;line-height:1.7;color:#444;margin-bottom:24px;">
+          <span data-lang="ca">{{ config.contacte.subtitol_ca }}</span>
+          <span data-lang="es">{{ config.contacte.subtitol_es }}</span>
         </p>
-        <p style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:24px;">
-          <span data-lang="ca">Secretaria de la SCPC·ACAPIR</span>
-          <span data-lang="es">Secretaría de la SCPC·ACAPIR</span>
+        <p style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:24px;">
+          <a href="mailto:{{ config.contacte.email }}" style="color:#000;font-weight:700;text-decoration:none;">{{ config.contacte.email }}</a>
         </p>
         <div style="display:flex;gap:16px;">
-          <a href="{{ config.twitter }}" target="_blank" rel="noopener" class="btn-outline-white">X / Twitter</a>
-          <a href="{{ config.instagram }}" target="_blank" rel="noopener" class="btn-outline-white">Instagram</a>
+          <a href="{{ config.xarxes.twitter }}" target="_blank" rel="noopener" class="btn-outline-black">X / Twitter</a>
+          <a href="{{ config.xarxes.instagram }}" target="_blank" rel="noopener" class="btn-outline-black">Instagram</a>
         </div>
       </div>
+      <form name="contacte" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+        style="display:flex;flex-direction:column;gap:14px;">
+        <input type="hidden" name="form-name" value="contacte">
+        <p style="display:none;"><label>No ompliu: <input name="bot-field"></label></p>
+        <input type="text" name="nom" required placeholder="Nom / Nombre"
+          style="background:#fff;border:1px solid #ddd;padding:12px 16px;color:#000;font-size:14px;font-family:inherit;outline:none;">
+        <input type="email" name="email" required placeholder="Email"
+          style="background:#fff;border:1px solid #ddd;padding:12px 16px;color:#000;font-size:14px;font-family:inherit;outline:none;">
+        <textarea name="missatge" required rows="4" placeholder="Missatge / Mensaje"
+          style="background:#fff;border:1px solid #ddd;padding:12px 16px;color:#000;font-size:14px;font-family:inherit;outline:none;resize:vertical;"></textarea>
+        <button type="submit" class="btn-tq" style="align-self:flex-start;padding:12px 28px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;">
+          <span data-lang="ca">Enviar missatge</span><span data-lang="es">Enviar mensaje</span>
+        </button>
+      </form>
     </div>
   </div>
 </section>
