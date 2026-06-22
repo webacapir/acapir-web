@@ -45,5 +45,5 @@ resum_es: >-
 
 
   Todos los interesados en inscribirse al Congreso, pueden hacerlo a través de la web https://congresoanpir.org/
-esborrany: true
+esborrany: false
 ---
