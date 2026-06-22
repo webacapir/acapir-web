@@ -4,9 +4,42 @@ title_ca: Els principals experts en salut mental debatran a Girona sobre la
 title_es: Los principales expertos en salud mental debatirán en Girona sobre la
   necesidad de garantizar el acceso a una atención psicológica de calidad
 date: 2026-02-12
-image: https://www.anpir.org/wp-content/uploads/CARTEL-HORIZONTAL_ANPIR_2026-1024x576.jpg
-link: https://congresoanpir.org/
-destacada: false
+resum_ca: >-
+  La ciutat de Girona acollirà, del 28 al 30 de maig, el XXV Congrés Nacional i
+  VI Internacional de Psicologia Clínica de la Societat Espanyola de Psicologia
+  Clínica (SEPC-ANPIR), que se celebrarà al Palau de Congressos. Allà es donaran
+  cita centenars d'especialistes i professionals de la psicologia clínica, així
+  com experts rellevants a nivell nacional i internacional, per debatre sobre
+  salut mental i la necessitat de garantir l'accés a una atenció comunitària
+  especialitzada digna i de qualitat.
+
+
+  Amb el lema d'aquesta edició: “A contracorrent. Atenció comunitària digna i de qualitat”, es pretén donar veu a una multiplicitat de mirades que oferiran una visió més complexa i integrada de la realitat en què es desenvolupa la professió de la psicologia clínica.
+
+
+  Per això, Dignitat i Qualitat són els eixos vertebradors al voltant dels quals s'ha articulat el programa d'aquest congrés nacional i internacional, que en aquesta edició compleix 25 anys, i que se centra a reivindicar l'atenció comunitària que la societat mereix.
+
+
+  Així, s'abordaran temes molt diversos, amb representació de professionals del món acadèmic i del sistema sanitari a les diferents taules que debatran sobre trastorns de la personalitat; prevenció del suïcidi; eines i tractaments de psicoteràpia; salut mental en la infància i l'adolescència; neuropsicologia, i psicologia clínica en atenció primària, entre d'altres.
+
+  UNA EDICIÓ MOLT REIVINDICATIVA
+
+
+  Es posarà el focus en el model assistencial comunitari, l'ètica i els drets en salut mental i la situació actual de l'atenció en salut mental al Sistema Nacional de Salut.
+
+
+  En aquest punt, la Societat Catalana de Psicologia Clínica (SCPC-ACAPIR), amfitriona i coorganitzadora d'aquesta XXV edició del Congrés, presentarà un informe que analitza la situació de l'atenció comunitària a Catalunya titulat ‘La (des)atenció a la salut mental en el Sistema Nacional de Salut: una anàlisi des de la situació a Catalunya’.
+
+
+  També es presentaran diferents grups de treball i es duran a terme activitats i tallers paral·leler sobre temàtiques diverses, completant d'aquesta manera una àmplia oferta formativa i experiencial per a tots els participants.
+
+  PREMIS A LA RECERCA EN PSICOLOGIA CLÍNICA
+
+
+  Finalment, el Comitè Científic del Congrés lliurarà en l'acte de cloenda el XX Premi SEPC-ANPIR Joves Investigadors en Psicologia Clínica i el X Premi SEPC-ANPIR al millor article sobre Psicologia Clínica al Sistema Nacional de Salut. Guardons que tenen la finalitat d'estimular i reconèixer la tasca de recerca entre els professionals de la psicologia clínica a Espanya.
+
+
+  Tots els interessats a inscriure's al Congrés, ho poden fer a través del web https://congresoanpir.org/
 resum_es: >-
   La ciudad de Girona acogerá, del 28 al 30 de mayo, el XXV Congreso Nacional y
   VI Internacional de Psicología Clínica de la Sociedad Española de Psicología
@@ -45,5 +78,10 @@ resum_es: >-
 
 
   Todos los interesados en inscribirse al Congreso, pueden hacerlo a través de la web https://congresoanpir.org/
+link_text_ca: Enllaç al web del congrés
 esborrany: false
+destacada: false
+image: https://www.anpir.org/wp-content/uploads/CARTEL-HORIZONTAL_ANPIR_2026-1024x576.jpg
+link: https://congresoanpir.org/
+link_text_es: Enlace a la web del congreso
 ---
