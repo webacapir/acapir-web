@@ -74,6 +74,7 @@
     }
     #topnav img { height: 68px; width: auto; display: block;
       transition: height .4s; }
+    .junta-cell img { width: 68px !important; height: 68px !important; }
     #topnav.solid {
       height: 52px; padding: 0 28px;
       background: rgba(255,255,255,.96);
@@ -381,8 +382,9 @@
     .news-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
     .resource-card { transition: border-color .2s ease; }
     .resource-card:hover { border-color: #4ADDD5 !important; }
-    .topnav-link { transition: border-color .2s; }
+    .topnav-link { transition: border-color .2s, opacity .3s; opacity: 0; pointer-events: none; }
     .topnav-link:hover { border-bottom-color: #4ADDD5; }
+    #topnav.solid .topnav-link { opacity: 1; pointer-events: auto; }
     /* ── Menú hamburguesa mòbil ─────────────────────────── */
     .hamburger {
       display: none;

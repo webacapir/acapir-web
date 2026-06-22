@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340">
+  <rect width="600" height="340" fill="#0a0a0a"/>
+  <!-- Connexions -->
+  <line x1="300" y1="170" x2="150" y2="90" stroke="rgba(74,221,213,.3)" stroke-width="1.5"/>
+  <line x1="300" y1="170" x2="450" y2="90" stroke="rgba(74,221,213,.3)" stroke-width="1.5"/>
+  <line x1="300" y1="170" x2="130" y2="230" stroke="rgba(74,221,213,.3)" stroke-width="1.5"/>
+  <line x1="300" y1="170" x2="470" y2="250" stroke="rgba(74,221,213,.3)" stroke-width="1.5"/>
+  <line x1="300" y1="170" x2="300" y2="40" stroke="rgba(74,221,213,.3)" stroke-width="1.5"/>
+  <line x1="150" y1="90" x2="80" y2="150" stroke="rgba(74,221,213,.15)" stroke-width="1"/>
+  <line x1="450" y1="90" x2="530" y2="150" stroke="rgba(74,221,213,.15)" stroke-width="1"/>
+  <line x1="130" y1="230" x2="60" y2="290" stroke="rgba(74,221,213,.15)" stroke-width="1"/>
+  <line x1="470" y1="250" x2="545" y2="295" stroke="rgba(74,221,213,.15)" stroke-width="1"/>
+  <!-- Nodes secundaris -->
+  <circle cx="150" cy="90" r="12" fill="rgba(74,221,213,.4)" stroke="#4ADDD5" stroke-width="1.5"/>
+  <circle cx="450" cy="90" r="12" fill="rgba(74,221,213,.4)" stroke="#4ADDD5" stroke-width="1.5"/>
+  <circle cx="130" cy="230" r="12" fill="rgba(74,221,213,.4)" stroke="#4ADDD5" stroke-width="1.5"/>
+  <circle cx="470" cy="250" r="12" fill="rgba(74,221,213,.4)" stroke="#4ADDD5" stroke-width="1.5"/>
+  <circle cx="300" cy="40" r="12" fill="rgba(74,221,213,.4)" stroke="#4ADDD5" stroke-width="1.5"/>
+  <!-- Nodes terciaris -->
+  <circle cx="80" cy="150" r="7" fill="rgba(74,221,213,.2)" stroke="rgba(74,221,213,.5)" stroke-width="1"/>
+  <circle cx="530" cy="150" r="7" fill="rgba(74,221,213,.2)" stroke="rgba(74,221,213,.5)" stroke-width="1"/>
+  <circle cx="60" cy="290" r="7" fill="rgba(74,221,213,.2)" stroke="rgba(74,221,213,.5)" stroke-width="1"/>
+  <circle cx="545" cy="295" r="7" fill="rgba(74,221,213,.2)" stroke="rgba(74,221,213,.5)" stroke-width="1"/>
+  <!-- Node central -->
+  <circle cx="300" cy="170" r="28" fill="#4ADDD5"/>
+  <text x="300" y="175" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="800" fill="#000" text-anchor="middle">CAT</text>
+  <!-- Text -->
+  <text x="40" y="330" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#4ADDD5" letter-spacing="2">UNITATS SUPRASECTORIALS</text>
+  <text x="40" y="315" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="300" fill="rgba(255,255,255,.4)" letter-spacing="1">MAPA DE RECURSOS · CATALUNYA</text>
+</svg>
