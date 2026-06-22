@@ -490,12 +490,19 @@
       .content-width { padding: 0 20px; }
       .section-pad { padding: 56px 0; }
       .about-grid, .linies-grid-top, .linies-grid-bot,
-      .news-grid, .doc-grid, .video-inner {
+      .doc-grid, .video-inner {
+        grid-template-columns: 1fr !important;
+      }
+      .news-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .news-grid-2 {
         grid-template-columns: 1fr !important;
       }
       #contacte .reveal { grid-template-columns: 1fr !important; }
-      .news-secondary-col { flex-direction: row !important; flex-wrap: wrap; gap: 16px !important; }
-      .news-secondary-col .news-card { width: calc(50% - 8px); }
+      .news-secondary-col { flex-direction: column !important; }
+      .news-secondary-col .news-card { width: 100%; }
     }
   
   </style>
