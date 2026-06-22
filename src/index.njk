@@ -504,10 +504,11 @@ layout: layouts/base.njk
           <a href="{{ config.xarxes.instagram }}" target="_blank" rel="noopener" class="btn-outline-black">Instagram</a>
         </div>
       </div>
-      <form name="contacte" method="POST" action="/gracies" data-netlify="true" netlify-honeypot="bot-field"
+      <form method="POST" action="https://api.web3forms.com/submit"
         style="display:flex;flex-direction:column;gap:14px;">
-        <input type="hidden" name="form-name" value="contacte">
-        <p style="display:none;"><label>No ompliu: <input name="bot-field"></label></p>
+        <input type="hidden" name="access_key" value="f17e3d7b-6d0b-4c7e-a751-9958992e7cdb">
+        <input type="hidden" name="redirect" value="https://acapir.cat/gracies/">
+        <input type="hidden" name="subject" value="Nou missatge de contacte - SCPC-ACAPIR">
         <input type="text" name="nom" required placeholder="Nom / Nombre"
           style="background:#fff;border:1px solid #ddd;padding:12px 16px;color:#000;font-size:14px;font-family:inherit;outline:none;">
         <input type="email" name="email" required placeholder="Email"
