@@ -18,7 +18,7 @@ resum_es: >-
   La Mesa estuvo moderada por Dª. Paula Punsoda y contó con las ponencias destacadas de Dª. Debbie Fuentes (Psicóloga Clínica del programa de Suport a la Primària Infanto Juvenil del CSMIJ Selva Marítima – Girona);
 
   D. Miguel Gárriz (Psicólogo Clínico del programa de Tratamientos Grupales y Soporte a la Pimaria – Parc de Salut Mar – Barcelona) y D. Carlos Veiga (Psicólogo Clínico, Centro de Salud de Montevil – Gijón).
-image: /assets/img/mesa-redonda-ap.jpeg
+image: /assets/img/mesa-redonda-ap-.jpeg
 esborrany: false
 destacada: false
 link: https://youtu.be/geMYkhndfU8
