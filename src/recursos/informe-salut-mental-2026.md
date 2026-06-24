@@ -30,7 +30,7 @@ autors: ""
 isbn: ""
 llicencia: ""
 image: /assets/img/informe-2026.jpg
-link: https://zenodo.org/records/20686884/files/DOC-20260617-WA0000..pdf?download=1
+link: https://zenodo.org/records/20686884
 destacat: true
 esborrany: false
 ---
