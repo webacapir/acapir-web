@@ -62,10 +62,10 @@ resum_es: >-
 
 
   Se trata de un análisis basado en la experiencia acumulada de profesionales especialistas en psicología clínica que trabajan en la red pública. Y tiene como objetivo describir cómo opera en la práctica el sistema de salud mental en Cataluña y qué efectos produce esta forma de organización, uno de los cuales es el deterioro de la atención clínica. El informe, que pretende ser un punto de inflexión para mejorar la atención a los pacientes de salud mental, está disponible aquí para su consulta. Asimismo, la entidad va a solicitar una reunión a la consellera de Sanitat de la Generalitat, Olga Pané, para entregarle el documento.
-link_text_ca: Accedeix aquí al document
+link_text_ca: ACCEDEIX AQUÍ AL DOCUMENT
 esborrany: false
 destacada: true
 image: /assets/img/informe-2026.jpg
-link: https://zenodo.org/records/20686884/files/DOC-20260617-WA0000..pdf?download=1
-link_text_es: Accede aquí al documento
+link: https://zenodo.org/records/20686884
+link_text_es: ACCEDE AQUÍ AL DOCUMENTO
 ---
