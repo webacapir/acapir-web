@@ -69,7 +69,8 @@ permalink: /informe-salut-mental-catalunya-2026/
 .inf { max-width: 860px; margin: 0 auto; padding: 90px 40px 80px; }
 
 /* Capçalera */
-/* inf-header: substituït per inf-action-card */
+.inf-header { display: grid; grid-template-columns: 1fr 185px; gap: 40px; align-items: start; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+.inf-header-img img { width: 100%; border: 1px solid #eee; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
 .inf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #4ADDD5; margin-bottom: 14px; }
 .inf-h1 { font-size: clamp(22px, 3.2vw, 40px); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 14px; }
 .inf-subtitol { font-size: clamp(13px, 1.1vw, 16px); font-weight: 300; color: #555; margin-bottom: 16px; }
@@ -97,26 +98,13 @@ permalink: /informe-salut-mental-catalunya-2026/
 .inf-stat-u { font-size: .45em; font-weight: 300; }
 .inf-stat-d { font-size: 13px; font-weight: 400; color: #000; line-height: 1.4; }
 
-/* Targeta d'acció header */
-.inf-action-card { display: grid; grid-template-columns: 160px 1fr; gap: 28px; align-items: start; }
-.inf-action-cover img { width: 100%; border: 1px solid #e8e8e8; box-shadow: 0 6px 28px rgba(0,0,0,.12); }
-.inf-action-right { display: flex; flex-direction: column; }
-.inf-download-btn {
-  display: flex; align-items: center; gap: 16px;
-  background: #000; color: #fff; text-decoration: none;
-  padding: 18px 24px; border: none; cursor: pointer;
-  transition: background .2s;
-}
-.inf-download-btn:hover { background: #222; }
-.inf-download-icon { font-size: 28px; font-weight: 300; color: #4ADDD5; flex-shrink: 0; }
-.inf-download-main { display: block; font-size: 15px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 3px; }
-.inf-download-sub { display: block; font-size: 11px; font-weight: 300; color: rgba(255,255,255,.55); letter-spacing: .03em; }
+/* inf-header: original v3 */
+.inf-header { display: grid; grid-template-columns: 1fr 185px; gap: 40px; align-items: start; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+.inf-header-img img { width: 100%; border: 1px solid #eee; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
 
-@media (max-width: 680px) {
-  .inf-action-card { grid-template-columns: 100px 1fr; gap: 16px; }
-  .inf-download-btn { padding: 14px 18px; }
-  .inf-download-main { font-size: 14px; }
-}
+/* Hover en el botó de descàrrega */
+.inf-btn { transition: background .2s; }
+.inf-btn:hover { background: #222; }
 
 /* Metodologia */
 .inf-meto { background: #f6f6f6; padding: 24px 28px; border-left: 3px solid #4ADDD5; }
@@ -157,6 +145,8 @@ permalink: /informe-salut-mental-catalunya-2026/
 /* Responsive */
 @media (max-width: 680px) {
   .inf { padding: 80px 20px 60px; }
+  .inf-header { grid-template-columns: 1fr; }
+  .inf-header-img { display: none; }
   .inf-stats { grid-template-columns: 1fr; gap: 1px; }
   .inf-cta-final { padding: 36px 20px; }
 }
@@ -166,52 +156,37 @@ permalink: /informe-salut-mental-catalunya-2026/
 <article class="inf">
 
   <!-- CAPÇALERA -->
-  <header style="margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid #eee;">
-
-    <!-- Breadcrumb -->
-    <a href="/" style="font-size:11px;font-weight:500;color:#aaa;text-decoration:none;display:inline-block;margin-bottom:20px;letter-spacing:.04em;">
-      ← <span data-lang="ca">Tornar a l'inici</span><span data-lang="es">Volver al inicio</span>
-    </a>
-
-    <!-- Eyebrow + Títol (amplada completa) -->
-    <p class="inf-eyebrow">
-      <span data-lang="ca">Informe · Juny de 2026</span><span data-lang="es">Informe · Junio de 2026</span>
-    </p>
-    <h1 class="inf-h1" style="margin-bottom:10px;">
-      <span data-lang="ca">La salut mental a Catalunya: entre el discurs institucional i la pràctica real</span><span data-lang="es">La salud mental en Cataluña: entre el discurso institucional y la práctica real</span>
-    </h1>
-    <p class="inf-subtitol" style="margin-bottom:32px;">
-      <span data-lang="ca">Una anàlisi des de l'experiència dels professionals de la psicologia clínica</span><span data-lang="es">Un análisis desde la experiencia de los profesionales de la psicología clínica</span>
-    </p>
-
-    <!-- Targeta d'acció: imatge + descàrrega -->
-    <div class="inf-action-card">
-      <div class="inf-action-cover">
-        <img src="/assets/img/informe-2026.jpg" alt="Informe SCPC-ACAPIR 2026" loading="eager" />
-      </div>
-      <div class="inf-action-right">
-        <!-- Botó de descàrrega prominent -->
-        <a href="https://zenodo.org/records/20686884" target="_blank" rel="noopener" class="inf-download-btn">
-          <span class="inf-download-icon">↓</span>
-          <span>
-            <span class="inf-download-main"><span data-lang="ca">Descarregar l'informe a Zenodo</span><span data-lang="es">Descargar el informe en Zenodo</span></span>
-            <span class="inf-download-sub"><span data-lang="ca">PDF · Accés obert · CC BY-NC-SA 4.0</span><span data-lang="es">PDF · Acceso abierto · CC BY-NC-SA 4.0</span></span>
-          </span>
+  <header class="inf-header">
+    <div>
+      <a href="/" style="font-size:11px;font-weight:500;color:#aaa;text-decoration:none;display:inline-block;margin-bottom:12px;letter-spacing:.04em;">
+        ← <span data-lang="ca">Tornar a l'inici</span><span data-lang="es">Volver al inicio</span>
+      </a>
+      <p class="inf-eyebrow">
+        <span data-lang="ca">Informe · Juny de 2026</span><span data-lang="es">Informe · Junio de 2026</span>
+      </p>
+      <h1 class="inf-h1">
+        <span data-lang="ca">La salut mental a Catalunya: entre el discurs institucional i la pràctica real</span><span data-lang="es">La salud mental en Cataluña: entre el discurso institucional y la práctica real</span>
+      </h1>
+      <p class="inf-subtitol">
+        <span data-lang="ca">Una anàlisi des de l'experiència dels professionals de la psicologia clínica</span><span data-lang="es">Un análisis desde la experiencia de los profesionales de la psicología clínica</span>
+      </p>
+      <p class="inf-credit">
+        Societat Catalana de Psicologia Clínica – ACAPIR ·
+        <a href="https://doi.org/10.5281/zenodo.20686884" target="_blank" rel="noopener" class="inf-doi">DOI: 10.5281/zenodo.20686884</a><br>
+        ISBN: 978-84-09-87424-8 · CC BY-NC-SA 4.0
+      </p>
+      <div class="inf-cta">
+        <a href="https://zenodo.org/records/20686884" target="_blank" rel="noopener" class="inf-btn">
+          <span data-lang="ca">↓ Descarregar l'informe a Zenodo</span><span data-lang="es">↓ Descargar el informe en Zenodo</span>
         </a>
-        <p style="font-size:11px;color:#bbb;margin:8px 0 0;" data-lang="es">El documento completo está en catalán.</p>
-
-        <!-- Separador i metadades -->
-        <div style="border-top:1px solid #eee;margin:20px 0;padding-top:20px;">
-          <p style="font-size:12px;color:#aaa;line-height:1.7;margin-bottom:16px;">
-            Societat Catalana de Psicologia Clínica – ACAPIR<br>
-            <a href="https://doi.org/10.5281/zenodo.20686884" target="_blank" rel="noopener" class="inf-doi">DOI: 10.5281/zenodo.20686884</a><br>
-            ISBN: 978-84-09-87424-8
-          </p>
-          <button class="inf-btn-sec" onclick="document.getElementById('com-citar').scrollIntoView({behavior:'smooth'});">
-            <span data-lang="ca">Com citar aquest informe ↓</span><span data-lang="es">Cómo citar este informe ↓</span>
-          </button>
-        </div>
+        <span class="inf-lang-note" data-lang="es">El documento está en catalán.</span>
+        <button class="inf-btn-sec" onclick="document.getElementById('com-citar').scrollIntoView({behavior:'smooth'});">
+          <span data-lang="ca">Com citar ↓</span><span data-lang="es">Cómo citar ↓</span>
+        </button>
       </div>
+    </div>
+    <div class="inf-header-img">
+      <img src="/assets/img/informe-2026.jpg" alt="Informe SCPC-ACAPIR 2026" loading="eager" />
     </div>
   </header>
 
