@@ -46,7 +46,7 @@ permalink: /informe-salut-mental-catalunya-2026/
 <meta name="citation_isbn" content="978-84-09-87424-8">
 <meta name="citation_language" content="ca">
 <meta name="citation_technical_report_institution" content="Societat Catalana de Psicologia Clínica – ACAPIR">
-<meta name="citation_pdf_url" content="https://zenodo.org/records/20686884/files/DOC-20260617-WA0000..pdf?download=1">
+<meta name="citation_pdf_url" content="https://zenodo.org/records/20686884/files/informe-salut-mental-catalunya-scpc-acapir-2026.pdf">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Report","name":"La salut mental a Catalunya: entre el discurs institucional i la pràctica real","inLanguage":"ca","datePublished":"2026-06","author":[{"@type":"Person","name":"Jesús López-Gómez"},{"@type":"Person","name":"María José Miñano Valero"},{"@type":"Person","name":"Mariona Aparicio-Muñoz"},{"@type":"Person","name":"Núria Batlle i Nicolau"},{"@type":"Person","name":"Emma Bonamaisó Nogué"},{"@type":"Person","name":"Bernat Carreras Marcos"},{"@type":"Person","name":"Lorena Carrascal Granados"},{"@type":"Person","name":"María África Cruz García"},{"@type":"Person","name":"Patricia Escalona Zorita"},{"@type":"Person","name":"Miguel Gárriz Vera"},{"@type":"Person","name":"Carla Mariscal Plaza"},{"@type":"Person","name":"Jordi Mestres-Carbonell"},{"@type":"Person","name":"Neus Miquel Giner"},{"@type":"Person","name":"Cristina Tablero Nadal"},{"@type":"Person","name":"Berta Vilaseca Garcia"}],"publisher":{"@type":"Organization","name":"Societat Catalana de Psicologia Clínica – ACAPIR","url":"https://acapir.cat"},"identifier":"https://doi.org/10.5281/zenodo.20686884","isbn":"978-84-09-87424-8","license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","url":"https://acapir.cat/informe-salut-mental-catalunya-2026/"}
 </script>
@@ -105,6 +105,11 @@ permalink: /informe-salut-mental-catalunya-2026/
 /* Hover en el botó de descàrrega */
 .inf-btn { transition: background .2s; }
 .inf-btn:hover { background: #222; }
+.inf-btn-download-sec {
+  font-size: 12px; font-weight: 600; color: #000;
+  text-decoration: underline; text-decoration-color: #4ADDD5;
+  text-underline-offset: 3px; padding: 2px 0;
+}
 
 /* Metodologia */
 .inf-meto { background: #f6f6f6; padding: 24px 28px; border-left: 3px solid #4ADDD5; }
@@ -176,8 +181,11 @@ permalink: /informe-salut-mental-catalunya-2026/
         ISBN: 978-84-09-87424-8 · CC BY-NC-SA 4.0
       </p>
       <div class="inf-cta">
-        <a href="https://zenodo.org/records/20686884" target="_blank" rel="noopener" class="inf-btn">
-          <span data-lang="ca">↓ Descarregar l'informe a Zenodo</span><span data-lang="es">↓ Descargar el informe en Zenodo</span>
+        <a href="{{ informe.pdf_viewer }}" target="_blank" rel="noopener" class="inf-btn">
+          <span data-lang="ca">Llegir l'informe (PDF)</span><span data-lang="es">Leer el informe (PDF)</span>
+        </a>
+        <a href="{{ informe.pdf_download }}" class="inf-btn-download-sec">
+          <span data-lang="ca">↓ Descarregar PDF</span><span data-lang="es">↓ Descargar PDF</span>
         </a>
         <span class="inf-lang-note" data-lang="es">El documento está en catalán.</span>
         <button class="inf-btn-sec" onclick="document.getElementById('com-citar').scrollIntoView({behavior:'smooth'});">
@@ -395,9 +403,14 @@ permalink: /informe-salut-mental-catalunya-2026/
     <p class="inf-cta-sub">
       <span data-lang="ca">PDF disponible a Zenodo. Llicència CC BY-NC-SA 4.0.</span><span data-lang="es">PDF disponible en Zenodo. Licencia CC BY-NC-SA 4.0. El documento está en catalán.</span>
     </p>
-    <a href="https://zenodo.org/records/20686884" target="_blank" rel="noopener" class="inf-btn-final">
-      <span data-lang="ca">↓ Descarregar a Zenodo</span><span data-lang="es">↓ Descargar en Zenodo</span>
-    </a>
+<div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <a href="{{ informe.pdf_viewer }}" target="_blank" rel="noopener" class="inf-btn-final">
+        <span data-lang="ca">Llegir l'informe (PDF)</span><span data-lang="es">Leer el informe (PDF)</span>
+      </a>
+      <a href="{{ informe.pdf_download }}" style="font-size:12px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:underline;text-underline-offset:3px;">
+        <span data-lang="ca">↓ Descarregar PDF al dispositiu</span><span data-lang="es">↓ Descargar PDF al dispositivo</span>
+      </a>
+    </div>
   </section>
 
 </article>

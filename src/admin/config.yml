@@ -217,5 +217,12 @@ collections:
         name: "doc_complementari"
         file: "src/_data/informe.json"
         fields:
-          - { label: "Document disponible?", name: "doc_complementari_disponible", widget: "boolean", default: false, hint: "Activa quan el document estigui llest per publicar." }
-          - { label: "Enllaç al document", name: "doc_complementari_link", widget: "string", required: false, hint: "URL del PDF o document quan estigui disponible." }
+          - label: "Enllaços PDF de l'informe principal"
+            name: "pdf"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "URL del PDF (visor navegador)", name: "pdf_viewer", widget: "string", hint: "L'usuari llegeix el PDF al navegador. S'obre en nova pestanya." }
+              - { label: "URL del PDF (descàrrega directa)", name: "pdf_download", widget: "string", hint: "Afegir ?download=1 al final de la URL del visor." }
+          - { label: "Document complementari disponible?", name: "doc_complementari_disponible", widget: "boolean", default: false, hint: "Activa quan el document estigui llest per publicar." }
+          - { label: "Enllaç al document complementari", name: "doc_complementari_link", widget: "string", required: false, hint: "URL del PDF o document quan estigui disponible." }
