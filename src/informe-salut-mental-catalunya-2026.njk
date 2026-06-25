@@ -98,6 +98,18 @@ permalink: /informe-salut-mental-catalunya-2026/
 .inf-stat-u { font-size: .45em; font-weight: 300; }
 .inf-stat-d { font-size: 13px; font-weight: 400; color: #000; line-height: 1.4; }
 
+/* Visor PDF */
+.inf-pdf-launch-btn {
+  display: flex; align-items: center; gap: 16px;
+  width: 100%; padding: 20px 24px; background: #f6f6f6;
+  border: 2px dashed #ddd; cursor: pointer; font-family: inherit;
+  text-align: left; transition: border-color .2s, background .2s;
+}
+.inf-pdf-launch-btn:hover { border-color: #4ADDD5; background: #f0fffe; }
+.inf-pdf-icon { font-size: 28px; color: #4ADDD5; flex-shrink: 0; }
+.inf-pdf-launch-title { display: block; font-size: 15px; font-weight: 700; color: #000; margin-bottom: 3px; }
+.inf-pdf-launch-sub { display: block; font-size: 12px; font-weight: 300; color: #888; }
+
 /* inf-header: original v3 */
 .inf-header { display: grid; grid-template-columns: 1fr 185px; gap: 40px; align-items: start; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
 .inf-header-img img { width: 100%; border: 1px solid #eee; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
@@ -197,6 +209,49 @@ permalink: /informe-salut-mental-catalunya-2026/
       <img src="/assets/img/informe-2026.jpg" alt="Informe SCPC-ACAPIR 2026" loading="eager" />
     </div>
   </header>
+
+  <!-- VISOR PDF EN LÍNIA -->
+  <section class="inf-sec" id="visor-pdf">
+    <div id="pdf-launcher">
+      <button onclick="launchPdfViewer()" class="inf-pdf-launch-btn" id="pdf-launch-btn">
+        <span class="inf-pdf-icon">▶</span>
+        <span>
+          <span class="inf-pdf-launch-title"><span data-lang="ca">Llegir l'informe en línia</span><span data-lang="es">Leer el informe en línea</span></span>
+          <span class="inf-pdf-launch-sub"><span data-lang="ca">S'obrirà un visor directament en aquesta pàgina</span><span data-lang="es">Se abrirá un visor directamente en esta página</span></span>
+        </span>
+      </button>
+    </div>
+    <div id="pdf-viewer-container" style="display:none;">
+      <!-- Mostrar/amagar -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <span style="font-size:11px;color:#aaa;font-weight:500;letter-spacing:.06em;text-transform:uppercase;">
+          <span data-lang="ca">Visor de l'informe</span><span data-lang="es">Visor del informe</span>
+        </span>
+        <button onclick="closePdfViewer()" style="font-size:12px;color:#aaa;background:none;border:none;cursor:pointer;font-family:inherit;">
+          <span data-lang="ca">Tancar visor ✕</span><span data-lang="es">Cerrar visor ✕</span>
+        </button>
+      </div>
+      <!-- Iframe del PDF -->
+      <div id="pdf-frame-wrap" style="width:100%;background:#f0f0f0;border:1px solid #eee;">
+        <!-- S'injectarà per JS -->
+      </div>
+      <!-- Fallback si Zenodo bloqueja l'iframe -->
+      <div id="pdf-blocked" style="display:none;padding:32px;text-align:center;background:#f8f8f8;border:1px solid #eee;">
+        <p style="font-size:14px;color:#555;margin-bottom:20px;">
+          <span data-lang="ca">El servidor no permet mostrar el document en línia. Podeu accedir-hi directament:</span>
+          <span data-lang="es">El servidor no permite mostrar el documento en línea. Podéis acceder directamente:</span>
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="{{ informe.pdf_viewer }}" target="_blank" rel="noopener" class="inf-btn">
+            <span data-lang="ca">Obrir PDF en nova pestanya</span><span data-lang="es">Abrir PDF en nueva pestaña</span>
+          </a>
+          <a href="{{ informe.pdf_download }}" class="inf-btn" style="background:#555;">
+            <span data-lang="ca">↓ Descarregar PDF</span><span data-lang="es">↓ Descargar PDF</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- RESUM DEL DOCUMENT -->
   <section class="inf-sec">
@@ -416,6 +471,65 @@ permalink: /informe-salut-mental-catalunya-2026/
 </article>
 
 <script>
+  /* ── Visor PDF ───────────────────────────────────────────────── */
+  var PDF_URL = 'https://zenodo.org/records/20686884/files/informe-salut-mental-catalunya-scpc-acapir-2026.pdf';
+
+  function launchPdfViewer() {
+    var container = document.getElementById('pdf-viewer-container');
+    var launcher = document.getElementById('pdf-launcher');
+    var frameWrap = document.getElementById('pdf-frame-wrap');
+    var blocked = document.getElementById('pdf-blocked');
+
+    // Mostrar el contenidor
+    launcher.style.display = 'none';
+    container.style.display = 'block';
+
+    // Crear l'iframe
+    var iframe = document.createElement('iframe');
+    iframe.src = PDF_URL;
+    iframe.style.width = '100%';
+    iframe.style.height = '780px';
+    iframe.style.border = 'none';
+    iframe.style.display = 'block';
+
+    // Detectar si Zenodo bloqueja l'iframe
+    iframe.onload = function() {
+      try {
+        // Si l'iframe carrega correctament, amaguem el fallback
+        blocked.style.display = 'none';
+        frameWrap.style.display = 'block';
+      } catch(e) {
+        // Error de cross-origin = bloquejat
+        frameWrap.style.display = 'none';
+        blocked.style.display = 'block';
+      }
+    };
+
+    // Timeout: si no carrega en 5 segons, mostrar fallback
+    setTimeout(function() {
+      if (iframe.contentDocument === null || iframe.contentDocument.body === null) {
+        // Possiblement bloquejat
+      }
+      // Comprovació per headers X-Frame-Options
+      // Si el iframe és molt petit o buit, mostrar fallback
+    }, 5000);
+
+    frameWrap.appendChild(iframe);
+
+    // Scroll suau fins al visor
+    setTimeout(function() {
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  function closePdfViewer() {
+    document.getElementById('pdf-viewer-container').style.display = 'none';
+    document.getElementById('pdf-launcher').style.display = 'block';
+    document.getElementById('pdf-frame-wrap').innerHTML = '';
+    document.getElementById('pdf-blocked').style.display = 'none';
+    document.getElementById('visor-pdf').scrollIntoView({ behavior: 'smooth' });
+  }
+
   /* ── Canvi d'idioma: setLang no existeix a base.njk, cal definir-la aquí ── */
   function setLang(lang) {
     document.body.classList.toggle('lang-es', lang === 'es');
