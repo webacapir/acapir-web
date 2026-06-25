@@ -193,9 +193,9 @@ permalink: /informe-salut-mental-catalunya-2026/
         ISBN: 978-84-09-87424-8 · CC BY-NC-SA 4.0
       </p>
       <div class="inf-cta">
-        <a href="{{ informe.pdf_viewer }}" target="_blank" rel="noopener" class="inf-btn">
-          <span data-lang="ca">Llegir l'informe (PDF)</span><span data-lang="es">Leer el informe (PDF)</span>
-        </a>
+        <button onclick="document.getElementById('pdf-launch-btn').click();document.getElementById('visor-pdf').scrollIntoView({behavior:'smooth'});" class="inf-btn" style="border:none;cursor:pointer;font-family:inherit;">
+          <span data-lang="ca">Llegir l'informe en línia</span><span data-lang="es">Leer el informe en línea</span>
+        </button>
         <a href="{{ informe.pdf_download }}" class="inf-btn-download-sec">
           <span data-lang="ca">↓ Descarregar PDF</span><span data-lang="es">↓ Descargar PDF</span>
         </a>
@@ -217,7 +217,7 @@ permalink: /informe-salut-mental-catalunya-2026/
         <span class="inf-pdf-icon">▶</span>
         <span>
           <span class="inf-pdf-launch-title"><span data-lang="ca">Llegir l'informe en línia</span><span data-lang="es">Leer el informe en línea</span></span>
-          <span class="inf-pdf-launch-sub"><span data-lang="ca">S'obrirà un visor directament en aquesta pàgina</span><span data-lang="es">Se abrirá un visor directamente en esta página</span></span>
+          <span class="inf-pdf-launch-sub"><span data-lang="ca">Es mostra el PDF directament, sense descarregar</span><span data-lang="es">Se muestra el PDF directamente, sin descargar</span></span>
         </span>
       </button>
     </div>
@@ -459,11 +459,11 @@ permalink: /informe-salut-mental-catalunya-2026/
       <span data-lang="ca">PDF disponible a Zenodo. Llicència CC BY-NC-SA 4.0.</span><span data-lang="es">PDF disponible en Zenodo. Licencia CC BY-NC-SA 4.0. El documento está en catalán.</span>
     </p>
 <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-      <a href="{{ informe.pdf_viewer }}" target="_blank" rel="noopener" class="inf-btn-final">
-        <span data-lang="ca">Llegir l'informe (PDF)</span><span data-lang="es">Leer el informe (PDF)</span>
-      </a>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(function(){document.getElementById('pdf-launch-btn').click();},500);" class="inf-btn-final" style="border:none;cursor:pointer;font-family:inherit;">
+        <span data-lang="ca">Llegir l'informe en línia</span><span data-lang="es">Leer el informe en línea</span>
+      </button>
       <a href="{{ informe.pdf_download }}" style="font-size:12px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:underline;text-underline-offset:3px;">
-        <span data-lang="ca">↓ Descarregar PDF al dispositiu</span><span data-lang="es">↓ Descargar PDF al dispositivo</span>
+        <span data-lang="ca">↓ Descarregar PDF</span><span data-lang="es">↓ Descargar PDF</span>
       </a>
     </div>
   </section>
