@@ -40,8 +40,8 @@ layout: layouts/base.njk
   </div>
 
   <div class="news-band" role="button" tabindex="0"
-    onclick="{% if config.nou.link and config.nou.link != '#actualitat' %}window.location.href='{{ config.nou.link }}';{% else %}bandClick(this,event,'actualitat');{% endif %}"
-    onkeydown="{% if config.nou.link and config.nou.link != '#actualitat' %}if(event.key==='Enter')window.location.href='{{ config.nou.link }}';{% else %}if(event.key==='Enter')bandClick(this,event,'actualitat');{% endif %}">
+    onclick="bandClick(this,event,'actualitat');"
+    onkeydown="if(event.key==='Enter')bandClick(this,event,'actualitat');">
     <div class="news-band-bg" style="background-image:url('{% if config.nou.imatge %}{{ config.nou.imatge }}{% else %}/assets/img/informe-2026.jpg{% endif %}');"></div>
     <div class="news-band-coin">
       <span class="news-band-coin-label"><span data-lang="ca">NOU</span><span data-lang="es">NUEVO</span></span>
