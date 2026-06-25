@@ -209,3 +209,13 @@ collections:
             fields:
               - { label: "Twitter / X (URL)", name: "twitter", widget: "string" }
               - { label: "Instagram (URL)", name: "instagram", widget: "string" }
+
+  - name: "informe"
+    label: "10 · Informe — contingut editable"
+    files:
+      - label: "Document tècnic complementari"
+        name: "doc_complementari"
+        file: "src/_data/informe.json"
+        fields:
+          - { label: "Document disponible?", name: "doc_complementari_disponible", widget: "boolean", default: false, hint: "Activa quan el document estigui llest per publicar." }
+          - { label: "Enllaç al document", name: "doc_complementari_link", widget: "string", required: false, hint: "URL del PDF o document quan estigui disponible." }
