@@ -132,10 +132,25 @@ permalink: /informe-salut-mental-catalunya-2026/
 .inf-btn-final { display: inline-block; background: #4ADDD5; color: #000; padding: 14px 36px; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
 
 /* Responsive */
+/* Imatge mòbil: oculta en desktop, visible en mòbil */
+.inf-mobile-img { display: none; }
+
 @media (max-width: 680px) {
   .inf { padding: 80px 20px 60px; }
   .inf-header { grid-template-columns: 1fr; }
   .inf-header-img { display: none; }
+  .inf-mobile-img {
+    display: block;
+    margin: 16px 0 20px;
+  }
+  .inf-mobile-img img {
+    width: 120px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 12px rgba(0,0,0,.1);
+    float: left;
+    margin-right: 16px;
+    margin-bottom: 8px;
+  }
   .inf-stats { grid-template-columns: 1fr; gap: 1px; }
   .inf-cta-final { padding: 36px 20px; }
 }
@@ -147,6 +162,9 @@ permalink: /informe-salut-mental-catalunya-2026/
   <!-- CAPÇALERA -->
   <header class="inf-header">
     <div>
+      <a href="/" style="font-size:11px;font-weight:500;color:#aaa;text-decoration:none;display:inline-block;margin-bottom:12px;letter-spacing:.04em;">
+        ← <span data-lang="ca">Tornar a l'inici</span><span data-lang="es">Volver al inicio</span>
+      </a>
       <p class="inf-eyebrow">
         <span data-lang="ca">Informe · Juny de 2026</span><span data-lang="es">Informe · Junio de 2026</span>
       </p>
@@ -161,6 +179,10 @@ permalink: /informe-salut-mental-catalunya-2026/
         <a href="https://doi.org/10.5281/zenodo.20686884" target="_blank" rel="noopener" class="inf-doi">DOI: 10.5281/zenodo.20686884</a><br>
         ISBN: 978-84-09-87424-8 · CC BY-NC-SA 4.0
       </p>
+      <!-- Imatge visible només en mòbil -->
+      <div class="inf-mobile-img">
+        <img src="/assets/img/informe-2026.jpg" alt="Informe SCPC-ACAPIR 2026" loading="eager" />
+      </div>
       <div class="inf-cta">
         <a href="https://zenodo.org/records/20686884" target="_blank" rel="noopener" class="inf-btn">
           <span data-lang="ca">↓ Descarregar l'informe (PDF)</span><span data-lang="es">↓ Descargar el informe (PDF)</span>
@@ -389,30 +411,47 @@ permalink: /informe-salut-mental-catalunya-2026/
 </article>
 
 <script>
-function infAcc(btn) {
-  var body = btn.nextElementSibling;
-  var open = body.style.display !== 'none';
-  body.style.display = open ? 'none' : 'block';
-  btn.querySelector('.inf-acc-icon').textContent = open ? '+' : '−';
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Nav links → home
-  document.querySelectorAll('.topnav-link').forEach(function(link) {
-    var href = link.getAttribute('href') || '';
-    if (href.startsWith('#')) {
-      link.setAttribute('href', '/' + href);
-      link.onclick = function(e) { e.preventDefault(); window.location.href = '/' + href; };
-    }
-  });
-  // Contacte → home#contacte
-  var cBtn = document.querySelector('.topnav-btn-contacte');
-  if (cBtn) {
-    cBtn.href = '/#contacte';
-    cBtn.onclick = function(e) { e.preventDefault(); window.location.href = '/#contacte'; };
+  /* ── Canvi d'idioma: setLang no existeix a base.njk, cal definir-la aquí ── */
+  function setLang(lang) {
+    document.body.classList.toggle('lang-es', lang === 'es');
+    var btnCa = document.getElementById('btn-ca');
+    var btnEs = document.getElementById('btn-es');
+    if (btnCa) btnCa.classList.toggle('active', lang === 'ca');
+    if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+    document.documentElement.lang = lang === 'es' ? 'es' : 'ca';
+    try { localStorage.setItem('acapir-lang', lang); } catch(e) {}
   }
-  // Logo → home
-  var logo = document.querySelector('#topnav img');
-  if (logo) logo.onclick = function() { window.location.href = '/'; };
-});
+
+  function infAcc(btn) {
+    var body = btn.nextElementSibling;
+    var open = body.style.display !== 'none';
+    body.style.display = open ? 'none' : 'block';
+    btn.querySelector('.inf-acc-icon').textContent = open ? '+' : '−';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    /* Restaurar idioma guardat */
+    try {
+      var saved = localStorage.getItem('acapir-lang');
+      if (saved === 'es') setLang('es');
+    } catch(e) {}
+
+    /* Nav links → home */
+    document.querySelectorAll('.topnav-link').forEach(function(link) {
+      var href = link.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        link.setAttribute('href', '/' + href);
+        link.onclick = function(e) { e.preventDefault(); window.location.href = '/' + href; };
+      }
+    });
+    /* Contacte → home#contacte */
+    var cBtn = document.querySelector('.topnav-btn-contacte');
+    if (cBtn) {
+      cBtn.href = '/#contacte';
+      cBtn.onclick = function(e) { e.preventDefault(); window.location.href = '/#contacte'; };
+    }
+    /* Logo → home */
+    var logo = document.querySelector('#topnav img');
+    if (logo) logo.onclick = function() { window.location.href = '/'; };
+  });
 </script>
