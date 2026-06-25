@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 
   <!-- SEO -->
-  <title>{{ config.seo.titol }}</title>
+  {% block title %}<title>{{ config.seo.titol }}</title>{% endblock %}
   <meta name="description" content="{{ config.seo.descripcio_ca }} {{ config.seo.descripcio_es }}">
   <meta name="keywords" content="{{ config.seo.paraules_clau }}">
   <link rel="canonical" href="https://acapir.cat">
@@ -507,6 +507,7 @@
   
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="987182b6-7419-4e15-8c35-54d31893cc7d"></script>
+{% block head_extra %}{% endblock %}
 </head>
 <body>
 
