@@ -1,0 +1,21 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://acapir.cat/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {%- for page in collections.all %}
+  {%- if page.url and page.url != "/" and "/admin" not in page.url and "/gracies" not in page.url and "/sitemap" not in page.url and "/robots" not in page.url %}
+  <url>
+    <loc>https://acapir.cat{{ page.url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {%- endif %}
+  {%- endfor %}
+</urlset>
