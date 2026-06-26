@@ -125,8 +125,9 @@ collections:
       - { label: "Títol (català)", name: "title_ca", widget: "string" }
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Resum (català)", name: "resum_ca", widget: "text", required: false }
-      - { label: "Resumen (castellano)", name: "resum_es", widget: "text", required: false }
+      - { label: "Destacada (primera notícia)", name: "destacada", widget: "boolean", default: false, hint: "Activa per fer-la aparèixer com a notícia principal." }
+      - { label: "Text de la notícia (català)", name: "resum_ca", widget: "markdown", required: false, hint: "Text visible. Es veurà truncat; al clicar es desplega." }
+      - { label: "Texto de la noticia (castellano)", name: "resum_es", widget: "markdown", required: false }
       - { label: "Text complet (català)", name: "cos_ca", widget: "markdown", required: false, hint: "Si s'omple, el botó expandeix la notícia. Si no, el botó porta a l'enllaç extern." }
       - { label: "Texto completo (castellano)", name: "cos_es", widget: "markdown", required: false }
       - { label: "Imatge (opcional)", name: "image", widget: "image", required: false }
@@ -146,8 +147,9 @@ collections:
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
       - { label: "Tipus (PDF, Vídeo...)", name: "tipus", widget: "string", required: false }
-      - { label: "Resum (català)", name: "resum_ca", widget: "text", required: false }
-      - { label: "Resumen (castellano)", name: "resum_es", widget: "text", required: false }
+      - { label: "Destacada (primera notícia)", name: "destacada", widget: "boolean", default: false, hint: "Activa per fer-la aparèixer com a notícia principal." }
+      - { label: "Text de la notícia (català)", name: "resum_ca", widget: "markdown", required: false, hint: "Text visible. Es veurà truncat; al clicar es desplega." }
+      - { label: "Texto de la noticia (castellano)", name: "resum_es", widget: "markdown", required: false }
       - { label: "Autors", name: "autors", widget: "string", required: false }
       - { label: "ISBN", name: "isbn", widget: "string", required: false }
       - { label: "Llicència", name: "llicencia", widget: "string", required: false }

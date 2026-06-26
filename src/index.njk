@@ -248,7 +248,7 @@ layout: layouts/base.njk
               </div>
               {% endif %}
               {% if noticia.data.link %}
-              <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+              <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
                 style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
                 <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir al document" }}</span>
                 <span data-lang="es">{{ noticia.data.link_text_es or "Acceder al documento" }}</span>
@@ -256,7 +256,7 @@ layout: layouts/base.njk
               {% endif %}
             </div>
             {% elif noticia.data.link %}
-            <a href="{{ noticia.data.link }}" target="_blank" rel="noopener" class="btn-outline-black">
+            <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %} class="btn-outline-black">
               <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
               <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
             </a>
@@ -289,7 +289,7 @@ layout: layouts/base.njk
                 <span data-lang="es">{{ (noticia.data.cos_es or noticia.data.resum_es) | linkify | safe }}</span>
               </p>
               {% if noticia.data.link %}
-              <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+              <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
                 style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
                 <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir" }}</span>
                 <span data-lang="es">{{ noticia.data.link_text_es or "Acceder" }}</span>
@@ -297,7 +297,7 @@ layout: layouts/base.njk
               {% endif %}
             </div>
             {% elif noticia.data.link %}
-            <a href="{{ noticia.data.link }}" target="_blank" rel="noopener"
+            <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
               style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
               <span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span>
             </a>
