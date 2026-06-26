@@ -454,7 +454,7 @@ layout: layouts/base.njk
             {% if vid_url and ('youtu' in vid_url or 'vimeo' in vid_url) %}
             <div data-video="{{ vid_url }}" style="margin-bottom:12px;"></div>
             {% elif item.data.link %}
-            <a href="{{ item.data.link }}" target="_blank" rel="noopener"
+            <a href="{{ item.data.link }}"{% if item.data.link and "://" in item.data.link %} target="_blank" rel="noopener"{% endif %}
               style="display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#4ADDD5;text-decoration:none;">
               <span data-lang="ca">Accedir al material</span><span data-lang="es">Acceder al material</span>
             </a>
