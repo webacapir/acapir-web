@@ -382,7 +382,7 @@ layout: layouts/base.njk
         {% if recurs.data.isbn %}
         <p style="font-size:12px;font-weight:300;color:rgba(255,255,255,.35);margin-bottom:16px;">ISBN {{ recurs.data.isbn }} · {{ recurs.data.llicencia }}</p>
         {% endif %}
-        <a href="{{ recurs.data.link }}" target="_blank" rel="noopener" class="btn-outline-white">
+        <a href="{{ recurs.data.link }}"{% if recurs.data.link and "://" in recurs.data.link %} target="_blank" rel="noopener"{% endif %} class="btn-outline-white">
           <span data-lang="ca">Accedir al document</span><span data-lang="es">Acceder al documento</span>
         </a>
         </div>
