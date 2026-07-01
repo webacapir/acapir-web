@@ -13,7 +13,7 @@ El argumento central es que la distancia entre discurso y práctica no se explic
 
 El informe plantea siete propuestas concretas de reforma, orientadas a modificar las lógicas con las que opera el sistema: planificación sanitaria basada en necesidades reales, mejora de las condiciones profesionales, formación adecuada, reorganización de la red, reorientación de los indicadores, incorporación de investigación basada en la práctica y articulación intersectorial."
 destacada: true
-image: /assets/img/informe-2026.jpg
+image: /assets/img/informe-salut-mental-catalunya-2026-scpc-acapir.jpg
 link: /informe-salut-mental-catalunya-2026/
 link_text_ca: "LLEGIR L'INFORME COMPLET"
 link_text_es: "LEER EL INFORME COMPLETO"
