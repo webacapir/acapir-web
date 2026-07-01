@@ -161,8 +161,6 @@ permalink: /informe-salut-mental-catalunya-2026/
   background: #f6f6f6; border: 1px solid #eee;
   padding: 7px 14px; border-radius: 20px;
 }
-.inf-chip-coord { background: #000; color: #fff; border-color: #000; font-weight: 600; }
-
 /* Autors */
 .inf-autors { font-size: 14px; font-weight: 300; line-height: 1.9; color: #444; }
 .inf-nota { font-size: 13px; font-weight: 300; color: #888; margin-top: 14px; }
@@ -199,6 +197,8 @@ permalink: /informe-salut-mental-catalunya-2026/
   }
   .inf-stats { grid-template-columns: 1fr; gap: 1px; }
   .inf-cta-final { padding: 36px 20px; }
+  .inf-chips { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .inf-chip { width: 100%; box-sizing: border-box; }
 }
 </style>
 {% endblock %}
@@ -434,8 +434,8 @@ permalink: /informe-salut-mental-catalunya-2026/
       </h2>
       <span class="inf-label"><span data-lang="ca">Coordinació i redacció</span><span data-lang="es">Coordinación y redacción</span></span>
       <div class="inf-chips" style="margin-bottom:22px;">
-        <span class="inf-chip inf-chip-coord">Jesús López Gómez</span>
-        <span class="inf-chip inf-chip-coord">María José Miñano Valero</span>
+        <span class="inf-chip">Jesús López Gómez</span>
+        <span class="inf-chip">María José Miñano Valero</span>
       </div>
       <span class="inf-label">GRUP DE TREBALL I COAUTORS DE CONTINGUT</span>
       <div class="inf-chips">
