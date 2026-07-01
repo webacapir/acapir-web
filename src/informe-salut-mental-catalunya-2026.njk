@@ -159,11 +159,24 @@ permalink: /informe-salut-mental-catalunya-2026/
 .inf-cta-sub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.55); margin-bottom: 24px; }
 .inf-btn-final { display: inline-block; background: #4ADDD5; color: #000; padding: 14px 36px; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
 
+/* Chip d'imatge mòbil (amagat en desktop) */
+.inf-mobile-chip-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.inf-mobile-chip { display: none; }
+
 /* Responsive */
 @media (max-width: 680px) {
   .inf { padding: 80px 20px 60px; }
   .inf-header { grid-template-columns: 1fr; }
   .inf-header-img { display: none; }
+  .inf-mobile-chip {
+    display: block;
+    width: 56px;
+    height: 74px;
+    object-fit: cover;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 14px rgba(0,0,0,.12);
+    flex-shrink: 0;
+  }
   .inf-stats { grid-template-columns: 1fr; gap: 1px; }
   .inf-cta-final { padding: 36px 20px; }
 }
@@ -178,9 +191,12 @@ permalink: /informe-salut-mental-catalunya-2026/
       <a href="/" style="font-size:11px;font-weight:500;color:#aaa;text-decoration:none;display:inline-block;margin-bottom:12px;letter-spacing:.04em;">
         ← <span data-lang="ca">Tornar a l'inici</span><span data-lang="es">Volver al inicio</span>
       </a>
-      <p class="inf-eyebrow">
-        <span data-lang="ca">Informe · Juny de 2026</span><span data-lang="es">Informe · Junio de 2026</span>
-      </p>
+      <div class="inf-mobile-chip-row">
+        <p class="inf-eyebrow" style="margin-bottom:0;">
+          <span data-lang="ca">Informe · Juny de 2026</span><span data-lang="es">Informe · Junio de 2026</span>
+        </p>
+        <img src="/assets/img/informe-2026.jpg" alt="Informe SCPC-ACAPIR 2026" class="inf-mobile-chip" loading="eager" />
+      </div>
       <h1 class="inf-h1">
         <span data-lang="ca">La salut mental a Catalunya: entre el discurs institucional i la pràctica real</span><span data-lang="es">La salud mental en Cataluña: entre el discurso institucional y la práctica real</span>
       </h1>
@@ -390,6 +406,20 @@ permalink: /informe-salut-mental-catalunya-2026/
     </div>
   </section>
 
+  <!-- QUI SIGNA -->
+  <section class="inf-sec">
+    <h2 class="inf-h2">
+      <span data-lang="ca">Qui signa l'informe</span><span data-lang="es">Quién firma el informe</span>
+    </h2>
+    <span class="inf-label"><span data-lang="ca">Coordinació i redacció</span><span data-lang="es">Coordinación y redacción</span></span>
+    <p class="inf-autors" style="margin-bottom:28px;">Jesús López Gómez · María José Miñano Valero</p>
+    <span class="inf-label">GRUP DE TREBALL I COAUTORS DE CONTINGUT</span>
+    <p class="inf-autors">Mariona Aparicio Muñoz · Núria Batlle i Nicolau · Emma Bonamaisó Nogué · Bernat Carreras Marcos · Lorena Carrascal Granados · Mª Àfrica Cruz García · Patricia Escalona Zorita · Miguel Gárriz Vera · Carla Mariscal Plaza · Jordi Mestres Carbonell · Neus Miquel Giner · Cristina Tablero Nadal · Berta Vilaseca Garcia</p>
+    <p class="inf-nota">
+      <span data-lang="ca">Tots són especialistes (PEPC) o residents (PIR) en exercici a la xarxa pública catalana.</span><span data-lang="es">Todos son especialistas (PEPC) o residentes (PIR) en ejercicio en la red pública catalana.</span>
+    </p>
+  </section>
+
   <!-- COM CITAR -->
   <section id="com-citar" class="inf-sec">
     <h2 class="inf-h2">
@@ -407,20 +437,6 @@ permalink: /informe-salut-mental-catalunya-2026/
         });">Copiar cita</button>
       <span class="inf-cita-meta">DOI: 10.5281/zenodo.20686884 · ISBN: 978-84-09-87424-8 · CC BY-NC-SA 4.0</span>
     </div>
-  </section>
-
-  <!-- QUI SIGNA -->
-  <section class="inf-sec">
-    <h2 class="inf-h2">
-      <span data-lang="ca">Qui signa l'informe</span><span data-lang="es">Quién firma el informe</span>
-    </h2>
-    <span class="inf-label"><span data-lang="ca">Coordinació i redacció</span><span data-lang="es">Coordinación y redacción</span></span>
-    <p class="inf-autors" style="margin-bottom:28px;">Jesús López Gómez · María José Miñano Valero</p>
-    <span class="inf-label">GRUP DE TREBALL I COAUTORS DE CONTINGUT</span>
-    <p class="inf-autors">Mariona Aparicio Muñoz · Núria Batlle i Nicolau · Emma Bonamaisó Nogué · Bernat Carreras Marcos · Lorena Carrascal Granados · Mª Àfrica Cruz García · Patricia Escalona Zorita · Miguel Gárriz Vera · Carla Mariscal Plaza · Jordi Mestres Carbonell · Neus Miquel Giner · Cristina Tablero Nadal · Berta Vilaseca Garcia</p>
-    <p class="inf-nota">
-      <span data-lang="ca">Tots són especialistes (PEPC) o residents (PIR) en exercici a la xarxa pública catalana.</span><span data-lang="es">Todos son especialistas (PEPC) o residentes (PIR) en ejercicio en la red pública catalana.</span>
-    </p>
   </section>
 
   <!-- DOCUMENT TÈCNIC COMPLEMENTARI -->
