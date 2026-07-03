@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 
-  {% block page_seo %}
   <!-- SEO -->
   {% block title %}<title>{{ config.seo.titol }}</title>{% endblock %}
   <meta name="description" content="{{ config.seo.descripcio_ca }} {{ config.seo.descripcio_es }}">
   <meta name="keywords" content="{{ config.seo.paraules_clau }}">
+  {% block seo_override %}{% endblock %}
   <link rel="canonical" href="https://acapir.cat">
 
   <!-- Hreflang bilingüe -->
@@ -507,7 +507,7 @@
     }
   
   </style>
-  {% endblock %}
+
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="987182b6-7419-4e15-8c35-54d31893cc7d"></script>
 {% block head_extra %}{% endblock %}
