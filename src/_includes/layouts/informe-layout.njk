@@ -131,11 +131,11 @@
       padding-top: 80px;
       display: flex;
       flex-direction: column;
-      background: #f8f8f8;
+      background: #f6f6f6;
     }
     /* Pequeño respiro antes del primer negro en móvil */
     @media (max-width: 900px) {
-      #hero { background: #f8f8f8; }
+      #hero { background: #f6f6f6; }
       .hero-bands { padding-top: clamp(32px,6vh,64px); }
     }
 
@@ -547,9 +547,9 @@
 .inf { max-width: 860px; margin: 0 auto; padding: 90px 40px 80px; }
 
 /* Capçalera */
-.inf-header { display: grid; grid-template-columns: 1fr 185px; gap: 40px; align-items: start; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+.inf-header { display: grid; grid-template-columns: 1fr 200px; gap: 40px; align-items: center; margin-bottom: 48px; padding: 32px; background: #f6f6f6; border-radius: 8px; }
 .inf-header-img img { width: 100%; border: 1px solid #eee; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
-.inf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #4ADDD5; margin-bottom: 14px; }
+.inf-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #04342C; background: #4ADDD5; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
 .inf-h1 { font-size: clamp(22px, 3.2vw, 40px); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 14px; }
 .inf-subtitol { font-size: clamp(13px, 1.1vw, 16px); font-weight: 300; color: #555; margin-bottom: 16px; }
 .inf-credit { font-size: 11px; color: #aaa; margin-bottom: 24px; line-height: 1.6; }
@@ -590,7 +590,7 @@
 .inf-pdf-launch-sub { display: block; font-size: 12px; font-weight: 300; color: #888; }
 
 /* inf-header: original v3 */
-.inf-header { display: grid; grid-template-columns: 1fr 185px; gap: 40px; align-items: start; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+.inf-header { display: grid; grid-template-columns: 1fr 200px; gap: 40px; align-items: center; margin-bottom: 48px; padding: 32px; background: #f6f6f6; border-radius: 8px; }
 .inf-header-img img { width: 100%; border: 1px solid #eee; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
 
 /* Hover en el botó de descàrrega */
@@ -645,7 +645,7 @@
 .inf-nota { font-size: 13px; font-weight: 300; color: #888; margin-top: 14px; }
 
 /* Document complementari */
-.inf-doc-comp { background: #f9f9f9; border: 1px solid #ebebeb; padding: 24px 28px; }
+.inf-doc-comp { background: #f6f6f6; border: 1px solid #ebebeb; padding: 24px 28px; }
 .inf-doc-comp-label { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 10px; }
 .inf-doc-comp-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #555; }
 .inf-doc-comp-body { font-size: 13px; font-weight: 300; line-height: 1.75; color: #777; margin-bottom: 18px; }
@@ -663,17 +663,21 @@
 /* Responsive */
 @media (max-width: 680px) {
   .inf { padding: 80px 20px 60px; }
-  .inf-header { grid-template-columns: 1fr; }
+  .inf-header { grid-template-columns: 1fr; padding: 24px 20px; }
   .inf-header-img { display: none; }
+  .inf-mobile-chip-row { flex-direction: column; align-items: center; }
   .inf-mobile-chip {
     display: block;
-    width: 56px;
-    height: 74px;
+    order: -1;
+    width: 64px;
+    height: 84px;
     object-fit: cover;
     border: 1px solid #eee;
     box-shadow: 0 3px 14px rgba(0,0,0,.12);
     flex-shrink: 0;
+    margin-bottom: 12px;
   }
+  .inf-h1 { text-align: center; }
   .inf-stats { grid-template-columns: 1fr; gap: 1px; }
   .inf-cta-final { padding: 36px 20px; }
   .inf-chips { flex-direction: column; align-items: flex-start; gap: 6px; }
