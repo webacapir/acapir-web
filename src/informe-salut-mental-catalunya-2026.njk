@@ -333,37 +333,24 @@ permalink: /informe-salut-mental-catalunya-2026/
     launcher.style.display = 'none';
     container.style.display = 'block';
 
+    // En mòbil, els navegadors no renderitzen PDFs en iframes:
+    // usem Google Docs Viewer per mostrar-lo dins de la mateixa pàgina.
+    var esMobil = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    var srcIframe = esMobil
+      ? 'https://docs.google.com/viewer?url=' + encodeURIComponent('https://acapir.cat' + PDF_URL) + '&embedded=true'
+      : PDF_URL;
+
     // Crear l'iframe
     var iframe = document.createElement('iframe');
-    iframe.src = PDF_URL;
+    iframe.src = srcIframe;
     iframe.style.width = '100%';
     iframe.style.height = '780px';
     iframe.style.border = 'none';
     iframe.style.display = 'block';
 
-    // Detectar si Zenodo bloqueja l'iframe
-    iframe.onload = function() {
-      try {
-        // Si l'iframe carrega correctament, amaguem el fallback
-        blocked.style.display = 'none';
-        frameWrap.style.display = 'block';
-      } catch(e) {
-        // Error de cross-origin = bloquejat
-        frameWrap.style.display = 'none';
-        blocked.style.display = 'block';
-      }
-    };
-
-    // Timeout: si no carrega en 5 segons, mostrar fallback
-    setTimeout(function() {
-      if (iframe.contentDocument === null || iframe.contentDocument.body === null) {
-        // Possiblement bloquejat
-      }
-      // Comprovació per headers X-Frame-Options
-      // Si el iframe és molt petit o buit, mostrar fallback
-    }, 5000);
-
     frameWrap.appendChild(iframe);
+    blocked.style.display = 'none';
+    frameWrap.style.display = 'block';
 
     // Scroll suau fins al visor
     setTimeout(function() {
