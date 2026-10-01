@@ -121,6 +121,9 @@ collections:
     folder: "src/noticias"
     create: true
     slug: "{{slug}}"
+    identifier_field: "title_ca"
+    summary: "{{date | date('DD/MM/YYYY')}} · {{title_ca}}"
+    sortable_fields: ["date", "title_ca"]
     fields:
       - { label: "Títol (català)", name: "title_ca", widget: "string" }
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
