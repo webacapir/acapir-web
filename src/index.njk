@@ -39,9 +39,9 @@ layout: layouts/base.njk
 
   </div>
 
-  <div class="news-band" role="button" tabindex="0"
-    onclick="bandClick(this,event,'actualitat');"
-    onkeydown="if(event.key==='Enter')bandClick(this,event,'actualitat');">
+  <div class="news-band" role="button" tabindex="0" data-link="{{ config.nou.link or '#actualitat' }}"
+    onclick="nouGo(this);"
+    onkeydown="if(event.key==='Enter')nouGo(this);">
     <div class="news-band-bg" style="background-image:url('{% if config.nou.imatge %}{{ config.nou.imatge }}{% else %}/assets/img/informe-salut-mental-catalunya-2026-scpc-acapir.jpg{% endif %}');"></div>
     <div class="news-band-coin">
       <span class="news-band-coin-label"><span data-lang="ca">NOU</span><span data-lang="es">NUEVO</span></span>
@@ -202,63 +202,18 @@ layout: layouts/base.njk
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
             {% if noticia.data.resum_ca %}
-            <div id="resum-featured" style="margin-bottom:16px;">
-              <p class="resum-truncated" style="font-size:14px;font-weight:300;line-height:1.7;color:#555;">
-                <span data-lang="ca">{{ noticia.data.resum_ca | linkify | safe }}</span>
-                <span data-lang="es">{{ noticia.data.resum_es | linkify | safe }}</span>
-              </p>
+            <div class="news-text-wrap" style="margin-bottom:20px;">
+              <div class="news-text clamp" style="--clamp-lines:8;font-size:14px;font-weight:300;line-height:1.7;color:#555;">
+                <div data-lang="ca">{{ noticia.data.resum_ca | md | safe }}</div>
+                <div data-lang="es">{{ (noticia.data.resum_es or noticia.data.resum_ca) | md | safe }}</div>
+              </div>
+              <button type="button" class="news-more" hidden onclick="newsToggle(this)"><span class="lbl-more"><span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span></span><span class="lbl-less"><span data-lang="ca">Tancar</span><span data-lang="es">Cerrar</span></span></button>
             </div>
             {% endif %}
-            {% if noticia.data.resum_ca or noticia.data.cos_ca %}
-            <button onclick="
-              var scrollY = window.scrollY;
-              var wrap = document.getElementById('resum-featured');
-              var cos = document.getElementById('cos-featured');
-              var p = wrap ? wrap.querySelector('p') : null;
-              var open = this.getAttribute('data-open') === '1';
-              if (!open) {
-                if (p) p.classList.remove('resum-truncated');
-                if (cos) cos.style.display = 'block';
-                this.setAttribute('data-open','1');
-                this.querySelector('.btn-text-ca').textContent = 'Tancar';
-                this.querySelector('.btn-text-es').textContent = 'Cerrar';
-              } else {
-                if (p) p.classList.add('resum-truncated');
-                if (cos) cos.style.display = 'none';
-                this.setAttribute('data-open','0');
-                this.querySelector('.btn-text-ca').textContent = 'Llegir més';
-                this.querySelector('.btn-text-es').textContent = 'Leer más';
-                requestAnimationFrame(function(){ requestAnimationFrame(function(){
-                  var card = document.querySelector('.news-card-featured');
-                  if (card) {
-                    var top = card.getBoundingClientRect().top + window.scrollY - 96;
-                    window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
-                  }
-                }); });
-              }
-            " data-open="0" style="display:inline-block;background:none;border:none;padding:0;cursor:pointer;font-size:13px;font-weight:500;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;text-underline-offset:3px;margin-bottom:16px;font-family:inherit;touch-action:manipulation;">
-              <span class="btn-text-ca" data-lang="ca">Llegir més</span>
-              <span class="btn-text-es" data-lang="es">Leer más</span>
-            </button>
-            <div id="cos-featured" style="display:none;padding-top:16px;border-top:1px solid #eee;">
-              {% if noticia.data.cos_ca %}
-              <div style="font-size:14px;font-weight:300;line-height:1.8;color:#444;margin-bottom:16px;">
-                <span data-lang="ca">{{ noticia.data.cos_ca | linkify | safe }}</span>
-                <span data-lang="es">{{ noticia.data.cos_es | linkify | safe }}</span>
-              </div>
-              {% endif %}
-              {% if noticia.data.link %}
-              <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
-                style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
-                <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir al document" }}</span>
-                <span data-lang="es">{{ noticia.data.link_text_es or "Acceder al documento" }}</span>
-              </a>
-              {% endif %}
-            </div>
-            {% elif noticia.data.link %}
-            <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %} class="btn-outline-black">
-              <span data-lang="ca">{{ noticia.data.link_text_ca or "Llegir més" }}</span>
-              <span data-lang="es">{{ noticia.data.link_text_es or "Leer más" }}</span>
+            {% if noticia.data.link %}
+            <a href="{{ noticia.data.link }}"{% if "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %} class="btn-outline-black">
+              <span data-lang="ca">{{ noticia.data.link_text_ca or "Més informació" }}</span>
+              <span data-lang="es">{{ noticia.data.link_text_es or "Más información" }}</span>
             </a>
             {% endif %}
           </div>
@@ -280,26 +235,20 @@ layout: layouts/base.njk
               <span data-lang="ca">{{ noticia.data.title_ca }}</span>
               <span data-lang="es">{{ noticia.data.title_es }}</span>
             </h3>
-            {% if noticia.data.cos_ca or noticia.data.resum_ca %}
-            <button onclick="var c=this.nextElementSibling;var o=c.style.display!=='none';var sy=window.scrollY;c.style.display=o?'none':'block';this.textContent=o?'+ Llegir més':'− Tancar';if(o)requestAnimationFrame(function(){window.scrollTo(0,sy);});"
-              style="font-size:12px;font-weight:500;color:#000;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:#4ADDD5;text-underline-offset:2px;touch-action:manipulation;">+ Llegir més</button>
-            <div style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid #eee;">
-              <p style="font-size:13px;font-weight:300;line-height:1.7;color:#444;margin-bottom:10px;">
-                <span data-lang="ca">{{ (noticia.data.cos_ca or noticia.data.resum_ca) | linkify | safe }}</span>
-                <span data-lang="es">{{ (noticia.data.cos_es or noticia.data.resum_es) | linkify | safe }}</span>
-              </p>
-              {% if noticia.data.link %}
-              <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
-                style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
-                <span data-lang="ca">{{ noticia.data.link_text_ca or "Accedir" }}</span>
-                <span data-lang="es">{{ noticia.data.link_text_es or "Acceder" }}</span>
-              </a>
-              {% endif %}
+            {% if noticia.data.resum_ca %}
+            <div class="news-text-wrap" style="margin-bottom:12px;">
+              <div class="news-text clamp" style="--clamp-lines:4;font-size:13px;font-weight:300;line-height:1.7;color:#444;">
+                <div data-lang="ca">{{ noticia.data.resum_ca | md | safe }}</div>
+                <div data-lang="es">{{ (noticia.data.resum_es or noticia.data.resum_ca) | md | safe }}</div>
+              </div>
+              <button type="button" class="news-more" hidden onclick="newsToggle(this)"><span class="lbl-more"><span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span></span><span class="lbl-less"><span data-lang="ca">Tancar</span><span data-lang="es">Cerrar</span></span></button>
             </div>
-            {% elif noticia.data.link %}
-            <a href="{{ noticia.data.link }}"{% if noticia.data.link and "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
+            {% endif %}
+            {% if noticia.data.link %}
+            <a href="{{ noticia.data.link }}"{% if "://" in noticia.data.link %} target="_blank" rel="noopener"{% endif %}
               style="font-size:12px;font-weight:600;color:#000;text-decoration:underline;text-decoration-color:#4ADDD5;">
-              <span data-lang="ca">Llegir més</span><span data-lang="es">Leer más</span>
+              <span data-lang="ca">{{ noticia.data.link_text_ca or "Més informació" }}</span>
+              <span data-lang="es">{{ noticia.data.link_text_es or "Más información" }}</span>
             </a>
             {% endif %}
           </div>
@@ -563,6 +512,47 @@ layout: layouts/base.njk
     smoothScrollTo(Math.round(el.getBoundingClientRect().top + scrollY - navH));
   }
 
+  function nouGo(el) {
+    var l = (el.getAttribute('data-link') || '#actualitat').trim();
+    if (l.charAt(0) === '#') { scrollToId(l.slice(1) || 'actualitat'); return; }
+    var u;
+    try { u = new URL(l, window.location.href); } catch (err) { scrollToId('actualitat'); return; }
+    if (u.origin === window.location.origin || /(^|\.)acapir\.cat$/.test(u.hostname)) {
+      window.location.href = u.pathname + u.search + u.hash;
+    } else {
+      window.open(u.href, '_blank', 'noopener');
+    }
+  }
+
+  function newsClampCheck() {
+    document.querySelectorAll('.news-text-wrap').forEach(function(w) {
+      if (w.classList.contains('is-open')) return;
+      var t = w.querySelector('.news-text'), b = w.querySelector('.news-more');
+      if (!t || !b || t.offsetParent === null) return;
+      t.classList.add('clamp');
+      var cut = t.scrollHeight > t.clientHeight + 2;
+      t.classList.toggle('is-cut', cut);
+      b.hidden = !cut;
+    });
+  }
+
+  function newsToggle(btn) {
+    var w = btn.closest('.news-text-wrap'), t = w.querySelector('.news-text');
+    var open = !w.classList.contains('is-open');
+    w.classList.toggle('is-open', open);
+    t.classList.toggle('clamp', !open);
+    t.classList.toggle('is-cut', !open);
+    if (!open) {
+      var card = w.closest('.news-card') || w;
+      var top = card.getBoundingClientRect().top;
+      if (top < 0) window.scrollTo({ top: Math.max(0, top + window.scrollY - 96), behavior: 'instant' });
+    }
+  }
+
+  window.addEventListener('load', newsClampCheck);
+  window.addEventListener('resize', newsClampCheck);
+  new MutationObserver(newsClampCheck).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
   function bandClick(band, evt, sectionId) {
     document.querySelectorAll('.hero-bands .band').forEach(function(b) {
       b.classList.remove('active');
@@ -599,7 +589,7 @@ layout: layouts/base.njk
       newsBand.addEventListener('touchend', function(e) {
         var dy = Math.abs(e.changedTouches[0].clientY - nbY);
         var dx = Math.abs(e.changedTouches[0].clientX - nbX);
-        if (dy < 10 && dx < 10) { e.preventDefault(); scrollToId('actualitat'); }
+        if (dy < 10 && dx < 10) { e.preventDefault(); nouGo(newsBand); }
       });
     }
 
@@ -630,6 +620,7 @@ layout: layouts/base.njk
       b.style.color = active ? '#fff' : '#000';
       b.style.borderColor = active ? '#000' : '#ddd';
     });
+    newsClampCheck();
     // Scroll suau a la secció de noticias
     scrollToId('actualitat');
   }

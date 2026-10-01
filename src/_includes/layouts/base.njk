@@ -452,6 +452,20 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    /* Text de les notícies (Markdown del panel) */
+    .news-text { position: relative; }
+    .news-text.clamp { max-height: calc(1.7em * var(--clamp-lines, 6)); overflow: hidden; }
+    .news-text.clamp.is-cut::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2.2em; background: linear-gradient(to bottom, rgba(255,255,255,0), #fff); }
+    .news-text p { margin: 0 0 .8em; }
+    .news-text p:last-child { margin-bottom: 0; }
+    .news-text ul, .news-text ol { margin: 0 0 .8em 1.2em; padding: 0; }
+    .news-text li { margin-bottom: .3em; }
+    .news-text strong { font-weight: 600; color: #222; }
+    .news-text a { color: #000; text-decoration: underline; text-decoration-color: #4ADDD5; word-break: break-word; }
+    body.lang-es .news-text div[data-lang="es"] { display: block !important; }
+    .news-more { display: inline-block; background: none; border: none; padding: 0; margin-top: 10px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; color: #000; text-decoration: underline; text-decoration-color: #4ADDD5; text-underline-offset: 3px; touch-action: manipulation; }
+    .news-more[hidden] { display: none; }
+    .news-text-wrap.is-open .lbl-more, .news-text-wrap:not(.is-open) .lbl-less { display: none; }
     .video-thumb { position: relative; cursor: pointer; background: #000; aspect-ratio: 16/9; overflow: hidden; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: opacity .2s; display: block; }
     .video-thumb:hover img { opacity: 1; }

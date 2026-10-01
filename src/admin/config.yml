@@ -55,7 +55,7 @@ collections:
               - { label: "Text (català)", name: "ca", widget: "string" }
               - { label: "Texto (castellano)", name: "es", widget: "string" }
               - { label: "Data (ex: Juny 2026)", name: "data", widget: "string" }
-              - { label: "Enllaç (ex: #actualitat o URL completa)", name: "link", widget: "string", hint: "Posa #actualitat per baixar a la secció, o una URL completa per anar a una web externa." }
+              - { label: "Enllaç en clicar el destacat", name: "link", widget: "string", hint: "#actualitat baixa a Notícies. /informe-salut-mental-catalunya-2026/ obre una pàgina d'aquesta web. Una URL completa (https://...) obre una web externa en pestanya nova." }
               - { label: "Imatge de fons (opcional)", name: "imatge", widget: "image", required: false, hint: "Si no en poses cap, apareix la imatge per defecte de l'informe." }
 
   - name: "qui_som"
@@ -128,15 +128,13 @@ collections:
       - { label: "Títol (català)", name: "title_ca", widget: "string" }
       - { label: "Título (castellano)", name: "title_es", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Destacada (primera notícia)", name: "destacada", widget: "boolean", default: false, hint: "Activa per fer-la aparèixer com a notícia principal." }
-      - { label: "Text de la notícia (català)", name: "resum_ca", widget: "markdown", required: false, hint: "Text visible. Es veurà truncat; al clicar es desplega." }
-      - { label: "Texto de la noticia (castellano)", name: "resum_es", widget: "markdown", required: false }
-      - { label: "Text complet (català)", name: "cos_ca", widget: "markdown", required: false, hint: "Si s'omple, el botó expandeix la notícia. Si no, el botó porta a l'enllaç extern." }
-      - { label: "Texto completo (castellano)", name: "cos_es", widget: "markdown", required: false }
+      - { label: "Destacada (surt en gran)", name: "destacada", widget: "boolean", default: false, hint: "Marca-la només en una notícia. Si cap està marcada, surt en gran la més recent. Si en marques una, es queda en gran encara que en publiquis de més noves." }
+      - { label: "Text de la notícia (català)", name: "resum_ca", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [], hint: "Pots fer servir negreta, cursiva, llistes i paràgrafs. Si el text és llarg, a la web se'n veu l'inici i apareix «Llegir més»." }
+      - { label: "Texto de la noticia (castellano)", name: "resum_es", widget: "markdown", required: false, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"], editor_components: [] }
       - { label: "Imatge (opcional)", name: "image", widget: "image", required: false }
-      - { label: "Enllaç extern", name: "link", widget: "string", required: false }
-      - { label: "Text del botó (català)", name: "link_text_ca", widget: "string", required: false, default: "Llegir més" }
-      - { label: "Texto del botón (castellano)", name: "link_text_es", widget: "string", required: false, default: "Leer más" }
+      - { label: "Enllaç (opcional)", name: "link", widget: "string", required: false, hint: "Apareix com a botó sota el text. Pàgina d'aquesta web (/informe-salut-mental-catalunya-2026/) o URL completa (https://...)." }
+      - { label: "Text del botó de l'enllaç (català)", name: "link_text_ca", widget: "string", required: false, hint: "Si el deixes buit: «Més informació»." }
+      - { label: "Texto del botón del enlace (castellano)", name: "link_text_es", widget: "string", required: false, hint: "Si lo dejas vacío: «Más información»." }
       - { label: "Esborrany — no publicar", name: "esborrany", widget: "boolean", default: false }
 
   - name: "recursos"
@@ -214,6 +212,7 @@ collections:
             fields:
               - { label: "Twitter / X (URL)", name: "twitter", widget: "string" }
               - { label: "Instagram (URL)", name: "instagram", widget: "string" }
+              - { label: "LinkedIn (URL)", name: "linkedin", widget: "string", required: false }
 
   - name: "informe"
     label: "10 · Informe — contingut editable"

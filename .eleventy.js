@@ -1,3 +1,17 @@
+const markdownIt = require("markdown-it");
+const md = markdownIt({ html: false, breaks: true, linkify: true });
+const defaultLinkOpen = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
+  const href = tokens[idx].attrGet("href") || "";
+  if (/^https?:\/\//.test(href)) {
+    tokens[idx].attrSet("target", "_blank");
+    tokens[idx].attrSet("rel", "noopener");
+  }
+  return defaultLinkOpen(tokens, idx, options, env, self);
+};
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/admin");
@@ -14,6 +28,13 @@ module.exports = function(eleventyConfig) {
       '<a href="$1" target="_blank" rel="noopener" style="color:#4ADDD5;word-break:break-all;">$1</a>');
   });
 
+  // Filtre md: text del panel (Markdown) a HTML amb paràgrafs, negretes, llistes i enllaços
+  eleventyConfig.addFilter("md", function(text) {
+    if (!text) return "";
+    const clean = String(text).replace(/^[ \t]{4,}(?![-*+] |\d+[.)] )/gm, "");
+    return md.render(clean);
+  });
+
   // Filtro de fecha
   eleventyConfig.addFilter("dataFormat", function(date) {
     if (!date) return "";
@@ -22,11 +43,14 @@ module.exports = function(eleventyConfig) {
     return mesos[d.getMonth()] + " " + d.getFullYear();
   });
 
-  // Noticias ordenadas por fecha descendente
+  // Notícies per data descendent; la marcada com a "destacada" (la més recent si n'hi ha diverses) va al davant
   eleventyConfig.addCollection("noticias", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/noticias/*.md")
+    const items = collectionApi.getFilteredByGlob("src/noticias/*.md")
       .filter(item => !item.data.esborrany)
       .sort((a, b) => b.date - a.date);
+    const i = items.findIndex(item => item.data.destacada);
+    if (i > 0) items.unshift(items.splice(i, 1)[0]);
+    return items;
   });
 
   // Recursos ordenados por fecha descendente
