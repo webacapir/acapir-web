@@ -19,7 +19,7 @@ resum_es: El informe analiza la distancia entre lo que el sistema público de
   Mª José Miñano y Jesús López.
 cos_ca: ""
 cos_es: ""
-image: /assets/img/congres-girona.jpg
+image: /assets/img/congres-girona-2.jpg
 link: /informe-salut-mental-catalunya-2026/
 link_text_ca: LLEGIR L'INFORME COMPLET
 link_text_es: LEER EL INFORME COMPLETO
